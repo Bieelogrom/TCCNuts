@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif ;
+}
+
+:root{
+    --roxa: #a683ff;
+    --verde: #cae4ce;
+    --azul:  #d2ecf2;
+    --rosa:  #ffe3dd;
+    --branco: #fff;
+    --preto: #000;
+}
+
+/* DashBoard */
+.home-section{
+    position: relative;
+    left: 260px;
+    width: calc(100% - 260px);
+    height: 100vh;
+}
+.conteudo-adm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-dashboard{
+    background-color: var(--verde);
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.main-dashboard p{
+    color: var(--roxa);
+    text-align: center;
+    margin-top: 5px;
+}
+
+.feedback-users{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    width: 90%;
+    margin-top: 20rem;
+}
+
+.feedback-users .facilidade-app{
+    background-color: var(--verde);
+    padding: 10px;
+    text-align: center;
+    display: flex;
+}
+
+.feedback-users .faclidade-app .descricao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-users .aprovacao-app{
+    background-color: var(--verde);
+    padding: 10px;
+    text-align: center;
+    display: flex;
+}
+
+.feedback-users .aprovacao-app .descricao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-users .elogios-app{
+    background-color: var(--verde);
+    padding: 10px;
+    text-align: center;
+    display: flex;
+}
+
+.feedback-users .elogios-app .descricao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Circulo progresso Facilidade */
+.feedback-users .facilidade-app svg{
+    width: 120px;
+}
+
+.feedback-users .facilidade-app circle{
+    width: 150px;
+    height: 150px;
+    fill: none;
+    stroke: black;
+    stroke-width: 9;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+
+.feedback-users .facilidade-app circle:nth-child(1){
+    stroke-dashoffset: 0;
+    stroke: rgb(51, 51, 51);
+}
+
+.feedback-users .facilidade-app circle:nth-child(2){
+    stroke-dashoffset: calc(440 - 140);
+    stroke: var(--roxa);
+}
+
+
+/* Circulo progresso Aprovação */
+.feedback-users .aprovacao-app svg{
+    width: 120px;
+}
+
+.feedback-users .aprovacao-app circle{
+    width: 150px;
+    height: 150px;
+    fill: none;
+    stroke: black;
+    stroke-width: 9;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+
+.feedback-users .aprovacao-app circle:nth-child(1){
+    stroke-dashoffset: 0;
+    stroke: rgb(51, 51, 51);
+}
+
+.feedback-users .aprovacao-app circle:nth-child(2){
+    stroke-dashoffset: calc(440 - 140);
+    stroke: var(--roxa);
+}
+
+
+/* Circulo progresso Elogio */
+.feedback-users .elogios-app svg{
+    width: 120px;
+}
+
+.feedback-users .elogios-app circle{
+    width: 150px;
+    height: 150px;
+    fill: none;
+    stroke: black;
+    stroke-width: 9;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+
+.feedback-users .elogios-app circle:nth-child(1){
+    stroke-dashoffset: 0;
+    stroke: rgb(51, 51, 51);
+}
+
+.feedback-users .elogios-app circle:nth-child(2){
+    stroke-dashoffset: calc(440 - 140);
+    stroke: var(--roxa);
+}

@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif ;
+}
+
+:root{
+    --roxa: #a683ff;
+    --verde: #cae4ce;
+    --azul:  #d2ecf2;
+    --rosa:  #ffe3dd;
+    --branco: #fff;
+    --preto: #000;
+}
+
+/* Cadastrar */
+.home-section{
+    position: relative;
+    left: 260px;
+    width: calc(100% - 260px);
+    height: 100vh;
+}
+
+.conteudo-adm{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px 0 0 20px;
+}
+
+.foto-adm{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 20%;    
+}
+
+.foto-adm img{
+    width: 15%;
+    height: 100%;
+    border: solid 2px black;
+}
+
+.foto-adm .img-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.foto-adm .img-group label{
+    margin-bottom: 10px;
+}
+
+.foto-adm .img-group input[type="file"]{
+    background-color: #000;
+    cursor: pointer;
+    width: 36.5%;
+}
+
+.group-family{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+}
+
+.input-group input{
+    width: 30vw;
+    height: 5vh;
+    border-radius: 10px;
+    border: solid 1px black;
+    padding: 0 15px;
+}
+
+.btn-cadastrar{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-cadastrar input{
+    background-color: var(--rosa);
+    width: 50%;
+    height: 5vh;
+    border-radius: 10px;
+    border: solid 1px black;
+    cursor: pointer;
+}
