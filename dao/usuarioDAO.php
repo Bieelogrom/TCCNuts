@@ -7,7 +7,7 @@ class usuarioDAO{
     try {
 
         $sql = "INSERT INTO tbusuario (nomeUsuario, emailUsuario, dataNascUsuario, senhaUsuario) VALUES (:nome, :email, :dataNasc, :senha); ";
-        $sqlT = "INSERT INTO tbtelefone (numTelefone, idUsuario) VALUES (:phone, LAST_INSERT_ID()); ";
+        $sqlT = "INSERT INTO tbusuarioinfos (numTelefone, idUsuario) VALUES (:phone, LAST_INSERT_ID()); ";
 
         $query = conexao::getConexao()->prepare($sql);
         $query->bindValue(':nome', $usuario->getNomeUsuario());

@@ -17,15 +17,20 @@
         $usuario->setDataNascimentoUsuario($d['dataNasc']);
 
         if($d['password'] == $d['confirmPassword']){
-            $usuario->setSenhaUsuario($d['password']);
+            $usuario->setSenhaUsuario(md5($d['password']));
+
+            session_start();
+
+            $_SESSION['Usuarioautenticado'] = 'SIM';
+
+            header('Location: ../adicionarFoto.php');
+
+            $usuariodao->create($usuario);
         }else{
-            header('Location: ../index.php?login=erro');
-
+            header('Location: /index.php?login=erro');
+            exit();
         }
-        
-        header('Location: ../Views/siteSerMae/home.php');
 
-        $usuariodao->create($usuario);
     }else if(isset($_POST['login'])){
             $nome = trim($_POST['loginNome']);
             $senha = trim($_POST['loginSenha']);
@@ -108,11 +113,11 @@
         }else if(isset($_POST['atualizaPerfil'])){
             session_start();
 
-            $userID = $_SESSION["ID_conta"];
+             $userID = $_SESSION["ID_conta"];
             
             if(isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0){
 
-                $usuario->setApelidoUsuario($d["apelidoUsuario"]);
+                //$usuario->setApelidoUsuario($d["apelidoUsuario"]);
 
                 $diretoriodasfotos = "../img/Perfis/";
 

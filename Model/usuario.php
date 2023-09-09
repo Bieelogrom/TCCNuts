@@ -9,10 +9,17 @@ class Usuario{
     protected $senhaUsuario;
     protected $telefoneUsuario;
     protected $dataNascimentoUsuario;
-
     protected $apelidoUsuario;
-
     protected $fotoDePerfil;
+    protected $tipoDePerfil;
+
+    public function getTipoDePerfil(){
+        return $this->tipoDePerfil;
+    }
+
+    public function setTipoDePerfil($tipoDePerfil){
+        $this->tipoDePerfil = $tipoDePerfil;
+    }
 
     public function getFotoDePerfil(){
         return $this->fotoDePerfil;
