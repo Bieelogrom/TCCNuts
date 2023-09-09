@@ -1,8 +1,3 @@
-<?php 
-
-include_once ("../../Dao/validador_acesso_usuario.php");
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,7 +13,7 @@ include_once ("../../Dao/validador_acesso_usuario.php");
 
     <!--navBar-->
     <?php
-    include('../../components/siteSerMae/navBar.php');   
+    include('../../Components/siteSerMae/navBar.php');   
     ?>
     <!--navBar-->
 
@@ -31,13 +26,13 @@ include_once ("../../Dao/validador_acesso_usuario.php");
     <div class="main-left">
                     <!--inicio Boas vindas-->
                     <?php
-                    include('../../components/siteSerMae/boasVindas.php')
+                    include('../../Components/siteSerMae/boasVindas.php')
                     ?>
                     <!--final Boas vindas-->
 
                     <!--start aside bar-->
                     <?php
-                    include('../../components/siteSerMae/menu.php')
+                    include('../../Components/siteSerMae/menu.php')
                     ?>
                     <!--end aside bar-->
     </div>
@@ -151,7 +146,6 @@ include_once ("../../Dao/validador_acesso_usuario.php");
                         <div class="interaction-button">
                             <span><i class="fa fa-heart"></i></span>
                             <span><i class="fa fa-comment-dots"></i></span>
-                            <span><i class="fa fa-link"></i></span>
                         </div>
                         <div class="bookmark">
                             <i class="fa fa-bookmark"></i>
@@ -210,7 +204,6 @@ include_once ("../../Dao/validador_acesso_usuario.php");
                         <div class="interaction-button">
                             <span><i class="fa fa-heart"></i></span>
                             <span><i class="fa fa-comment-dots"></i></span>
-                            <span><i class="fa fa-link"></i></span>
                         </div>
                         <div class="bookmark">
                             <i class="fa fa-bookmark"></i>
@@ -265,7 +258,6 @@ include_once ("../../Dao/validador_acesso_usuario.php");
                         <div class="interaction-button">
                             <span><i class="fa fa-heart"></i></span>
                             <span><i class="fa fa-comment-dots"></i></span>
-                            <span><i class="fa fa-link"></i></span>
                         </div>
                         <div class="bookmark">
                             <i class="fa fa-bookmark"></i>

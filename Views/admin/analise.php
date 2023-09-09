@@ -36,7 +36,7 @@ $usuariodao = new usuarioDAO;
         <div class="conteudo-adm">
             <div>
                 <table>
-                    <thead class="Tabela_Admin">
+                    <thead>
                         <tr>
                             <th>
                                 <p class="colunas">Id</p>

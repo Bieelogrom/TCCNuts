@@ -10,20 +10,10 @@ include_once ("../../Dao/validador_acesso.php");
         <h3>Inicío</h3>
     </a>
 
-    <a class="menu-item">
-        <span><i class="fa-solid fa-heart"></i></span>
-        <h3>Dicas</h3>
-    </a>
-
-    <a class="menu-item" id="messageMenu">
+    <a class="menu-item" id="messageMenu" href="./../siteSerMae/chat.php">
         <span><i class="fa-solid fa-message"></i></span>
         <small class="nofty-counter" id="notfyCounter2">3+</small>
         <h3>Mensagens</h3>
-    </a>
-
-    <a class="menu-item" href="./../siteSerMae/perfil.php">
-        <span><i class="fa-solid fa-user"></i></span>
-        <h3>Perfil</h3>
     </a>
 
     <a class="menu-item" id="Notify-box">
@@ -73,9 +63,13 @@ include_once ("../../Dao/validador_acesso.php");
         </div>
     <!--Notificação box end-->
 
+    <a class="menu-item" id="theme">
+        <span><i class="fa-solid fa-heart"></i></span>
+        <h3>Dicas</h3>
+    </a>
 
-    <a class="menu-item" id="theme"  href="../../Views/siteSerMae/configurações.php">
-        <span><i class="fa-solid fa-user"></i></span>
+    <a class="menu-item" id="theme">
+        <span><i class="fa-solid fa-gear"></i></span>
         <h3>Configurações</h3>
     </a>
 

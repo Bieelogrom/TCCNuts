@@ -44,6 +44,7 @@
                     session_start();
                     $_SESSION['ID_conta'] = $logado[0]['idUsuario'];
                     $_SESSION['nomeUsuario'] = $logado[0]['nomeUsuario'];
+                    $_SESSION['fotoUsuario'] = $logado[0]['fotoUsuario'];
                     $_SESSION['Usuarioautenticado'] = 'SIM';
                 
                     
@@ -108,11 +109,11 @@
         }else if(isset($_POST['atualizaPerfil'])){
             session_start();
 
-            $userID = $_SESSION["ID_conta"];
+             $userID = $_SESSION["ID_conta"];
             
             if(isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0){
 
-                $usuario->setApelidoUsuario($d["apelidoUsuario"]);
+                //$usuario->setApelidoUsuario($d["apelidoUsuario"]);
 
                 $diretoriodasfotos = "../img/Perfis/";
 
@@ -122,11 +123,10 @@
 
                     $caminho_arquivo = $diretoriodasfotos . $nomeDaFoto;
 
-                    $usuario->setfotoDePerfil($caminho_arquivo);
+                    $usuario->setfotoDePerfil($nomeDaFoto);
 
                     $usuariodao->informacoesAdicionais($usuario);
 
-                    header(" ../Views/siteSerMae/home.php");
                 }
             }
         }

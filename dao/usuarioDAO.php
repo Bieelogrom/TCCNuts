@@ -83,8 +83,8 @@ class usuarioDAO{
     public function informacoesAdicionais(Usuario $usuario) {
         try{
 
-            $id = $_SESSION['ID_conta'];
-            $foto = $usuario->getFotoDePerfil();
+           echo $id = $_SESSION['ID_conta'];
+            echo $foto = $usuario->getFotoDePerfil();
 
 
             $sql = "UPDATE tbusuario set fotoUsuario = :foto WHERE idUsuario = :id";
@@ -95,7 +95,7 @@ class usuarioDAO{
 
 
             if($stmt->execute()){
-                header(" ../Views/siteSerMae/home.php");
+               echo "FOTO ATUALIZADA COM SUCESSO!";
 
             }else{
                 echo "Erro ao salvar foto de perfil.";
