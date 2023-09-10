@@ -17,13 +17,15 @@
         $usuario->setDataNascimentoUsuario($d['dataNasc']);
 
         if($d['password'] == $d['confirmPassword']){
-            $usuario->setSenhaUsuario(md5($d['password']));
+            $usuario->setSenhaUsuario($d['password']);
 
             session_start();
 
+            $_SESSION['ID_conta'] = $usuario->getIdUsuario();
+            $_SESSION['nomeUsuario'] = $usuario->getNomeUsuario();
             $_SESSION['Usuarioautenticado'] = 'SIM';
 
-            header('Location: ../adicionarFoto.php');
+            header('Location: ../Views/siteSerMae/home.php');
 
             $usuariodao->create($usuario);
         }else{
@@ -32,12 +34,13 @@
         }
 
     }else if(isset($_POST['login'])){
-            $nome = trim($_POST['loginNome']);
-            $senha = trim($_POST['loginSenha']);
+
+        $email = filter_input(INPUT_POST, 'loginEmail', FILTER_SANITIZE_EMAIL);
+        $senha = trim($_POST['loginSenha']);
             
 
             try {
-                $sql = "SELECT * FROM tbusuario WHERE nomeUsuario = '$nome' and senhaUsuario = '$senha'";
+                $sql = "SELECT * FROM tbusuario WHERE emailUsuario = '$email' and senhaUsuario = '$senha'";
     
                 $resultado = conexao::getConexao()->query($sql);
                 $logado = $resultado->fetchAll();
@@ -135,6 +138,3 @@
                 }
             }
         }
-
-
-?>

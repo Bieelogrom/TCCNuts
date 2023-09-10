@@ -1,6 +1,7 @@
 <?php
 
-include_once ("../../Dao/validador_acesso_usuario.php");
+include_once ("../../Dao/validador_acesso.php");
+
 
 ?>
 <!DOCTYPE html>

@@ -33,7 +33,7 @@ include_once "Dao/usuarioDAO.php"
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Usuária" name="loginNome">
+                        <input type="email" name="loginEmail" id="" placeholder="Email">  
                     </div>
 
                     <div class="input-field">

@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+
+include_once ("../../Dao/validador_acesso.php");
+
+
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
