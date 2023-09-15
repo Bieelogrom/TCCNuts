@@ -17,7 +17,9 @@ if (isset($_POST['registrar'])) {
     $usuario->setDataNascimentoUsuario($d['dataNasc']);
 
     if ($d['password'] == $d['confirmPassword']) {
-        $usuario->setSenhaUsuario($d['password']);
+        $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+        $usuario->setSenhaUsuario($hash);
 
         session_start();
 
@@ -29,34 +31,44 @@ if (isset($_POST['registrar'])) {
         $usuariodao->create($usuario);
     } else {
         header('Location: /index.php?login=erro');
-        exit();
     }
 } else if (isset($_POST['login'])) {
 
     $email = filter_input(INPUT_POST, 'loginEmail', FILTER_SANITIZE_EMAIL);
-    $senha = trim($_POST['loginSenha']);
+    $senha = trim(($_POST['loginSenha']));
 
 
     try {
-        $sql = "SELECT * FROM tbusuario WHERE emailUsuario = '$email' and senhaUsuario = '$senha'";
+        $sql = "SELECT * FROM tbusuario WHERE emailUsuario = '$email'";
 
         $resultado = conexao::getConexao()->query($sql);
         $logado = $resultado->fetchAll();
         $n = count($logado);
 
 
-
         if ($n == 1) {
-            session_start();
-            $_SESSION['ID_conta'] = $logado[0]['idUsuario'];
-            $_SESSION['nomeUsuario'] = $logado[0]['nomeUsuario'];
-            $_SESSION['Usuarioautenticado'] = 'SIM';
+            $query = "SELECT idUsuario FROM tbusuario WHERE emailUsuario = ?";
 
+            $id =  $logado[0]['idUsuario'];
+            $hash = $logado[0]['senhaUsuario'];
+            $email = $logado[0]['emailUsuario'];
+    
+            $stmt = conexao::getConexao()->prepare($sql);
+            $stmt->bindParam("s", $email);
+    
+            $stmt->bindValue($id, $hash);
+            $stmt->fetch();
 
-            header('Location: ../Views/siteSerMae/home.php');
+            if(password_verify($senha, $hash)){
+                echo "Logado";
+            }else{
+                echo "erro";
+            }
+
         } else {
             header('Location: ../index.php?login=erro');
         }
+
     } catch (PDOException $e) {
         echo "ERRO: " . $e->getMessage();
     }
@@ -107,13 +119,13 @@ if (isset($_POST['registrar'])) {
     $sql = "SELECT idUsuario FROM tbusuario WHERE nomeUsuario = '$nome'";
     $resultado = conexao::getConexao()->query($sql);
     $logado = $resultado->fetchAll();
+    
     $id = $logado[0]['idUsuario'];
 
-    $_SESSION['ID_conta'] = $id;
-    
-     if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
 
-        $diretoriodasfotos = "../img/Perfis/";
+    if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
+
+        $diretoriodasfotos = "../../img/Perfis/";
 
         $nomeDaFoto = uniqid() . "" . $_FILES["fotoUsuario"]["name"];
 
@@ -121,13 +133,13 @@ if (isset($_POST['registrar'])) {
 
             $caminho_arquivo = $diretoriodasfotos . $nomeDaFoto;
 
-            $usuario->setfotoDePerfil($nomeDaFoto);
+          $usuario->setfotoDePerfil($nomeDaFoto);
 
             $_SESSION['fotoUsuario'] = $usuario->getFotoDePerfil();
 
             header("Location: ../Views/siteSerMae/home.php");
 
-            $usuariodao->informacoesAdicionais($usuario);
+            $usuariodao->informacoesAdicionais($usuario); 
         }
-    } 
+    }
 }

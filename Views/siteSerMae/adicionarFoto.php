@@ -29,7 +29,7 @@ include_once("../../Dao/validador_acesso.php");
 
 
 
-                        <input type="hidden" class="button-yes" value="Enviar" id="EnviarButton" name="atualizaPerfil">
+                        <input type="submit" name="atualizaPerfil" class="button-yes" value="Enviar" id="EnviarButton">
                         <a href="home.php"><button class="button-no">Deixar para depois</button></a>
                     </div>
                 </form>
@@ -49,7 +49,7 @@ include_once("../../Dao/validador_acesso.php");
         inputFile.onchange = function() {
             profilePic.src = URL.createObjectURL(inputFile.files[0]);
 
-            botaoSubmit = document.getElementById("EnviarButton").type ="submit";
+           // botaoSubmit = document.getElementById("EnviarButton").type ="submit";
         }
 
     </script>

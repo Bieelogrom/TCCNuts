@@ -81,27 +81,31 @@ class usuarioDAO
         }
     }
 
-    public function informacoesAdicionais(Usuario $usuario)
-    {
-        try {
+    public function informacoesAdicionais(Usuario $usuario) {
+        try{
 
-            //$id = $_SESSION['ID_conta'];
+            $id = $_SESSION['ID_conta'];
             $foto = $usuario->getFotoDePerfil();
 
 
-            $sql = "INSERT INTO tbusuario (fotoUsuario) VALUES (:foto) WHERE idUsuario = LAST_INSERT_ID()";
+            $sql = "UPDATE tbusuario set fotoUsuario = :foto WHERE idUsuario = :id";
             $stmt = conexao::getConexao()->prepare($sql);
-            $stmt->bindParam(':foto', $foto);
-            //$stmt->bindParam(':id', $id);
+            $stmt ->bindParam(':foto', $foto);
+            $stmt ->bindParam(':id', $id);
 
 
 
-            if ($stmt->execute()) {
-                header(" ../Views/siteSerMae/home.php");
-            } else {
+            if($stmt->execute()){
+               echo "FOTO ATUALIZADA COM SUCESSO!";
+
+            }else{
                 echo "Erro ao salvar foto de perfil.";
             }
-        } catch (PDOException $e) {
+
+
+
+
+        }catch(PDOException $e){
             echo $e->getMessage();
         }
     }
