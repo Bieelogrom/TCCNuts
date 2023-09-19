@@ -60,7 +60,12 @@ if (isset($_POST['registrar'])) {
             $stmt->fetch();
 
             if(password_verify($senha, $hash)){
-                echo "Logado";
+                session_start();
+
+                $_SESSION['idConta'] =  $logado[0]['idUsuario'];
+
+                header('Location: ../Views/siteSerMae/home.php');
+                exit();
             }else{
                 echo "erro";
             }
@@ -114,16 +119,11 @@ if (isset($_POST['registrar'])) {
 } else if (isset($_POST['atualizaPerfil'])) {
     session_start();
 
-    $nome = $_SESSION['nomeUsuario'];
-
-    $sql = "SELECT idUsuario FROM tbusuario WHERE nomeUsuario = '$nome'";
-    $resultado = conexao::getConexao()->query($sql);
-    $logado = $resultado->fetchAll();
-    
-    $id = $logado[0]['idUsuario'];
+    echo $nome = $_SESSION['idUsuario'];
 
 
-    if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
+
+  /*   if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
 
         $diretoriodasfotos = "../../img/Perfis/";
 
@@ -141,5 +141,5 @@ if (isset($_POST['registrar'])) {
 
             $usuariodao->informacoesAdicionais($usuario); 
         }
-    }
+    } */
 }

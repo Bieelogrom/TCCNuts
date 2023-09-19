@@ -12,7 +12,8 @@ $Administrador = new Administrador();
 $d = filter_input_array(INPUT_POST);
 
 if(isset($_POST['login'])){
-    $email = $_POST['emailadmin'];
+
+    $email = filter_input(INPUT_POST, 'emailadmin', FILTER_SANITIZE_EMAIL);
     $senha = $_POST['senhaadmin'];
 
     try{
