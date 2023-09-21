@@ -22,6 +22,7 @@ $usuariodao = new usuarioDAO;
 
     <!-- CSS Navbar -->
     <link rel="stylesheet" href="../../components/ADMIN/style.css">
+    <link rel="stylesheet" href="../../css/ADMIN/Dashboard.css">
     <!-- Imports -->
     <!-- BoxIcons CDN links -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -36,63 +37,33 @@ $usuariodao = new usuarioDAO;
             </div>
 
             <div class="feedback-users">
-                <div class="facilidade-app">
-                    <div class="descricao">
-                        <p>Quantidade de usuarias</p>
-                        <span>cadastradas</span>
-                    </div>
-                    <div class="box">
-                        <div class="box-circle">
-                            <svg>
-                                <circle cx="60" cy="80" r="45" fill="#1c1c1c" stroke="#a683ff" stroke-width="9"></circle>
-                                <circle cx="60" cy="80" r="45" fill="#1c1c1c" stroke="#a683ff" stroke-width="9"></circle>
-                            </svg>
-                        </div>
-                        <div class="number-aprovação">
-                            <h2><?php echo $usuariodao->listaCadastros() ?></h2>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
 
-                <div class="aprovacao-app">
-                    <div class="descricao">
-                        <p>Aprovação do App</p>
-                        <span>Pelas Usuarias</span>
-                    </div>
-                    <div class="box">
-                        <div class="box-circle">
-                            <svg>
-                                <circle cx="60" cy="80" r="45" fill="#1c1c1c" stroke="#a683ff" stroke-width="9"></circle>
-                                <circle cx="60" cy="80" r="45" fill="#1c1c1c" stroke="#a683ff" stroke-width="9"></circle>
-                            </svg>
-                        </div>
-                        <div class="number-aprovação">
-                            <h2>50%</h2>
-                        </div>
+                <div class="card_cadastros">
+                    <img src="" alt="">
+                    <div>
+                        <h1 class="card_texto">Usuários Cadastradas</h1>
+                        <h2 class="card_valor"><?= $usuariodao->listaCadastros() ?></h2>
                     </div>
                 </div>
-                
 
-                <div class="elogios-app">
-                    <div class="descricao">
-                        <p>Elogios diários</p>
-                        <span>Pelas Usuarias</span>
-                    </div>
-                    <div class="box">
-                        <div class="box-circle">
-                            <svg>
-                                <circle cx="60" cy="80" r="45" fill="#1c1c1c" stroke="#a683ff" stroke-width="9"></circle>
-                                <circle cx="60" cy="80" r="45" fill="#1c1c1c" stroke="#a683ff" stroke-width="9"></circle>
-                            </svg>
-                        </div>
-                        <div class="number-elogio">
-                            <h2><?php ?></h2>
-                        </div>
+                <div class="card_suspensos">
+                    <img src="" alt="">
+                    <div>
+                        <h1 class="card_texto">Usuários Suspensos</h1>
+                        <h2 class="card_valor"><?= $usuariodao->listaCadastros() ?></h2>
                     </div>
                 </div>
+
+                <div class="card_banidos">
+                    <img src="" alt="">
+                    <div>
+                        <h1 class="card_texto">Usuários banidos</h1>
+                        <h2 class="card_valor"><?= $usuariodao->listaCadastros() ?></h2>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
     </section>
