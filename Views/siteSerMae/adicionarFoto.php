@@ -1,6 +1,16 @@
 <?php
 
+include_once "../../Dao/conexãoDAO.php";
 include_once("../../Dao/validador_acesso.php");
+
+$nome = $_SESSION['nomeUsuario'];
+
+$sql = "SELECT idUsuario FROM tbusuario WHERE nomeUsuario = '$nome'";
+$resultado = conexao::getConexao()->query($sql);
+$logado = $resultado->fetchAll();
+$n = count($logado);
+
+$id =  $logado[0]['idUsuario'];
 
 ?>
 <!DOCTYPE html>
@@ -17,43 +27,35 @@ include_once("../../Dao/validador_acesso.php");
 <body>
 
 
-    <main>
-        <div class="hero">
-            <div class="card">
-                <form action="../../controller/usuarioController.php" method="post">
-                    <img src="../../img/loginCadastro/adicionarFoto/perfil.png" id="profile-pic">
-                    <h1>Deseja inserir uma foto de perfil?</h1>
-                    <div class="buttons">
-                        <label class="button-yes" for="input-file">Sim</label>
-                        <input type="file" accept="image/*" id="input-file" name="fotoUsuario">
-
-
-
-                        <input type="hidden" name="atualizaPerfil" class="button-yes" value="Enviar" id="EnviarButton">
-                        <!-- <input type="submit" class="button-no" value="Deixar para depois" id="afterButton"> -->
-                    </div>
-                </form>
-            </div>
+<main>
+    <div class="hero">
+        <div class="card">
+            <form action="../../controller/usuarioController.php" method="post" enctype="multipart/form-data" id="meuFormulario">
+                <img src="../../img/loginCadastro/adicionarFoto/perfil.png" id="profile-pic">
+                <h1>Deseja inserir uma foto de perfil?</h1>
+                <?= $id ?>
+                <input type="hidden" name="meuInputHidden" value="<?= $id ?>">
+                <div class="buttons">
+                    <label class="button-yes" for="input-file">Sim</label>
+                    <input type="file" accept="image/*" id="input-file" name="fotoUsuario">
+                    <input type="submit" name="atualizaPerfil" class="button-yes" value="Enviar" id="EnviarButton">
+                </div>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 
+<script>
+    let profilePic = document.getElementById("profile-pic");
+    let inputFile = document.getElementById("input-file");
+    let botaoSubmit = document.getElementById("EnviarButton");
+    let afterButton = document.getElementById('afterButton');
 
-    <script>
-
-
-        let profilePic = document.getElementById("profile-pic");
-        let inputFile = document.getElementById("input-file");
-        let botaoSubmit = document.getElementById("EnviarButton");
-        let afterButton = document.getElementById('afterButton');
-
-        inputFile.onchange = function() {
-            profilePic.src = URL.createObjectURL(inputFile.files[0]);
-
-            botaoSubmit = document.getElementById("EnviarButton").type ="submit";
-            afterButton = document.getElementById('afterButton').type = "hidden";
-        }
-
-    </script>
+    inputFile.onchange = function() {
+        profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        afterButton = document.getElementById('afterButton').type = "hidden";
+    }
+</script>
 
 </body>
 

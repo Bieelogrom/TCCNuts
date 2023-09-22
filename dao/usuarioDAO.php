@@ -84,7 +84,7 @@ class usuarioDAO
     public function informacoesAdicionais(Usuario $usuario) {
         try{
 
-            $id = $_SESSION['ID_conta'];
+            $id = $_SESSION['IdConta'];
             $foto = $usuario->getFotoDePerfil();
 
 

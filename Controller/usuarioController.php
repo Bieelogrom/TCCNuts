@@ -119,13 +119,15 @@ if (isset($_POST['registrar'])) {
 } else if (isset($_POST['atualizaPerfil'])) {
     session_start();
 
-    echo $nome = $_SESSION['idUsuario'];
+    $id = $_POST['meuInputHidden'];
+
+    $_SESSION['IdConta'] = $id;
 
 
 
-  /*   if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
+     if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
 
-        $diretoriodasfotos = "../../img/Perfis/";
+        $diretoriodasfotos = "../img/Perfis/";
 
         $nomeDaFoto = uniqid() . "" . $_FILES["fotoUsuario"]["name"];
 
@@ -133,7 +135,7 @@ if (isset($_POST['registrar'])) {
 
             $caminho_arquivo = $diretoriodasfotos . $nomeDaFoto;
 
-          $usuario->setfotoDePerfil($nomeDaFoto);
+            $usuario->setfotoDePerfil($nomeDaFoto);
 
             $_SESSION['fotoUsuario'] = $usuario->getFotoDePerfil();
 
@@ -141,5 +143,5 @@ if (isset($_POST['registrar'])) {
 
             $usuariodao->informacoesAdicionais($usuario); 
         }
-    } */
+    } 
 }
