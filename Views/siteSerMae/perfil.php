@@ -52,10 +52,10 @@ include_once ("../../Dao/validador_acesso.php");
         <div class="cols__container">
             <div class="left__col">
                 <div class="img__container">
-                    <img src="./../../img/siteSerMae/perfil/icon.jpg" alt="Marina Alonzo"/>
+                    <img src="../../img/perfis/<?= $_SESSION['fotoUsuario'] ?>" alt="Foto de perfil"/>
                     <span></span>
                     </div>
-                        <h2>Marina Alonzo</h2>
+                        <h2><?= $_SESSION['nomeUsuario'] ?></h2>
                         <p>Lara - 2 aninhos e Thomas - 35 semanas</p>
                         <p>mari.lonzo@gmail.com</p>
 

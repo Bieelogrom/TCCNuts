@@ -8,7 +8,6 @@ $nome = $_SESSION['nomeUsuario'];
 $sql = "SELECT idUsuario FROM tbusuario WHERE nomeUsuario = '$nome'";
 $resultado = conexao::getConexao()->query($sql);
 $logado = $resultado->fetchAll();
-$n = count($logado);
 
 $id =  $logado[0]['idUsuario'];
 
@@ -33,12 +32,11 @@ $id =  $logado[0]['idUsuario'];
             <form action="../../controller/usuarioController.php" method="post" enctype="multipart/form-data" id="meuFormulario">
                 <img src="../../img/loginCadastro/adicionarFoto/perfil.png" id="profile-pic">
                 <h1>Deseja inserir uma foto de perfil?</h1>
-                <?= $id ?>
                 <input type="hidden" name="meuInputHidden" value="<?= $id ?>">
                 <div class="buttons">
                     <label class="button-yes" for="input-file">Sim</label>
                     <input type="file" accept="image/*" id="input-file" name="fotoUsuario">
-                    <input type="submit" name="atualizaPerfil" class="button-yes" value="Enviar" id="EnviarButton">
+                    <input type="hidden" name="atualizaPerfil" class="button-yes" value="Enviar" id="EnviarButton">
                 </div>
             </form>
         </div>
@@ -53,7 +51,9 @@ $id =  $logado[0]['idUsuario'];
 
     inputFile.onchange = function() {
         profilePic.src = URL.createObjectURL(inputFile.files[0]);
-        afterButton = document.getElementById('afterButton').type = "hidden";
+
+        afterButton = document.getElementById('EnviarButton').type = "submit";
+
     }
 </script>
 

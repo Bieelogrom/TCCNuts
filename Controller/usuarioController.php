@@ -42,41 +42,41 @@ if (isset($_POST['registrar'])) {
         $sql = "SELECT * FROM tbusuario WHERE emailUsuario = '$email'";
 
         $resultado = conexao::getConexao()->query($sql);
-        $logado = $resultado->fetchAll();
-        $n = count($logado);
+         $logado = $resultado->fetchAll();
+         $n = count($logado);
 
 
-        if ($n == 1) {
-            $query = "SELECT idUsuario FROM tbusuario WHERE emailUsuario = ?";
+         if ($n == 1) {
+             $query = "SELECT idUsuario FROM tbusuario WHERE emailUsuario = ?";
 
-            $id =  $logado[0]['idUsuario'];
-            $hash = $logado[0]['senhaUsuario'];
-            $email = $logado[0]['emailUsuario'];
+            echo $id =  $logado[0]['idUsuario'];
+            echo $hash = $logado[0]['senhaUsuario'];
+            echo $email = $logado[0]['emailUsuario'];
     
-            $stmt = conexao::getConexao()->prepare($sql);
-            $stmt->bindParam("s", $email);
+             $stmt = conexao::getConexao()->prepare($sql);
+             $stmt->bindParam("s", $email);
     
-            $stmt->bindValue($id, $hash);
-            $stmt->fetch();
+             $stmt->bindValue($id, $hash);
+             $stmt->fetch();
 
-            if(password_verify($senha, $hash)){
-                session_start();
+             if(password_verify($senha, $hash)){
+                 session_start();
 
-                $_SESSION['idConta'] =  $logado[0]['idUsuario'];
+    $_SESSION['idConta'] = $logado[0]['idUsuario'];
 
-                header('Location: ../Views/siteSerMae/home.php');
-                exit();
-            }else{
-                echo "erro";
-            }
-
-        } else {
-            header('Location: ../index.php?login=erro');
-        }
-
-    } catch (PDOException $e) {
-        echo "ERRO: " . $e->getMessage();
+                 header('Location: ../Views/siteSerMae/home.php');
+                 exit();
+             }else{
+                 echo "erro";
     }
+
+         } else {
+             header('Location: ../index.php?login=erro');
+         }
+
+     } catch (PDOException $e) {
+         echo "ERRO: " . $e->getMessage();
+     }
 } else if (isset($_POST['atualizar'])) {
 
     try {
