@@ -8,23 +8,17 @@ class usuarioDAO
     {
         try {
 
-            $sql = "INSERT INTO tbusuario (nomeUsuario, emailUsuario, dataNascUsuario, senhaUsuario) VALUES (:nome, :email, :dataNasc, :senha); ";
-            $sqlT = "INSERT INTO tbusuarioinfos (numTelefone, idUsuario) VALUES (:phone, LAST_INSERT_ID()); ";
+            $sql = "INSERT INTO tbusuario (nomeUsuario, telefoneUsuario, emailUsuario, nascUsuario, senhaUsuario) VALUES (:nome, :phone, :email, :dataNasc, :senha); ";
 
             $query = conexao::getConexao()->prepare($sql);
             $query->bindValue(':nome', $usuario->getNomeUsuario());
+            $query->bindValue(':phone', $usuario->getTelefoneUsuario());
             $query->bindValue(':email', $usuario->getEmailUsuario());
             $query->bindValue(':dataNasc', $usuario->getDataNascimentoUsuario());
             $query->bindValue(':senha', $usuario->getSenhaUsuario());
 
 
-
-            $queryT = conexao::getConexao()->prepare($sqlT);
-            $queryT->bindValue(':phone', $usuario->getTelefoneUsuario());
-
-
             $query->execute();
-            $queryT->execute();
         } catch (PDOException $e) {
             echo "Erro na inserção: " . $e->getMessage();
         }
