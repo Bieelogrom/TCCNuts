@@ -62,6 +62,7 @@ if (isset($_POST['registrar'])) {
               
 
                 $_SESSION['ID_conta'] = $logado[0]['idUsuario'];
+                $_SESSION['nomeUsuario'] = $logado[0]['nomeUsuario'];
                 $_SESSION['Usuarioautenticado'] = 'SIM';
 
                 header('Location: ../Views/siteSerMae/home.php');

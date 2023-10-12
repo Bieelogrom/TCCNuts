@@ -1,9 +1,7 @@
 <?php
-
 include_once "Dao/conexãoDAO.php";
 include_once "Model/usuario.php";
-include_once "Dao/usuarioDAO.php"
-
+include_once "Dao/usuarioDAO.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -13,6 +11,8 @@ include_once "Dao/usuarioDAO.php"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/logincadastro/index.css">
+    <link rel="stylesheet" href="css/ADMIN/style.css">
+    <link rel="stylesheet" href="css/ADMIN/Análise.css">
 
 
     <title>serMãe</title>
@@ -151,6 +151,33 @@ include_once "Dao/usuarioDAO.php"
             </div>
         </div>
     </div>
+
+    <?php if (isset($_GET['acesso']) && $_GET['acesso'] == "erro") { ?>
+        <div class="modal-containerBanir">
+            <div class="modal">
+                <h2>Erro de acesso</h2>
+                <p>Você precisa logar para acessar essa página!</p>
+                <hr />
+                <div class="btns">
+                    <button class="btnOK" onclick="closeModal(0)">OK</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            const modalErro = document.querySelector('.modal-containerBanir')
+            const opcaoModal = [modalErro]
+
+            function openModal(a) {
+                opcaoModal[a].classList.add('active')
+            }
+
+            function closeModal(b) {
+                opcaoModal[b].classList.remove('active')
+            }
+
+            openModal(0);
+        </script>
+    <?php } ?>
 
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>

@@ -3,7 +3,7 @@
 session_start();
 
 if(!isset($_SESSION['ID_conta'])){
-    header("Location: http://localhost/TCC2/index.php");
+    header("Location: ../../index.php?acesso=erro");
     exit();
 } 
 
