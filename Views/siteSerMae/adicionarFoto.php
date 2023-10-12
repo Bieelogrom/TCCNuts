@@ -1,18 +1,11 @@
 <?php
 
-include_once "../../Dao/conexãoDAO.php";
+include_once("../../Dao/conexãoDAO.php");
 include_once("../../Dao/validador_acesso.php");
 
-$nome = $_SESSION['nomeUsuario'];
+$id = $_SESSION['ID_conta'];
 
-$sql = "SELECT idUsuario FROM tbusuario WHERE nomeUsuario = '$nome'";
-$resultado = conexao::getConexao()->query($sql);
-$logado = $resultado->fetchAll();
-
-$id =  $logado[0]['idUsuario'];
-
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="pt-br">
 
 <head>

@@ -7,17 +7,15 @@ class usuarioDAO
     public function create(Usuario $usuario)
     {
         try {
-
             $sql = "INSERT INTO tbusuario (nomeUsuario, telefoneUsuario, emailUsuario, nascUsuario, senhaUsuario) VALUES (:nome, :phone, :email, :dataNasc, :senha); ";
-
+    
             $query = conexao::getConexao()->prepare($sql);
             $query->bindValue(':nome', $usuario->getNomeUsuario());
             $query->bindValue(':phone', $usuario->getTelefoneUsuario());
             $query->bindValue(':email', $usuario->getEmailUsuario());
             $query->bindValue(':dataNasc', $usuario->getDataNascimentoUsuario());
             $query->bindValue(':senha', $usuario->getSenhaUsuario());
-
-
+    
             $query->execute();
         } catch (PDOException $e) {
             echo "Erro na inserção: " . $e->getMessage();
@@ -78,7 +76,7 @@ class usuarioDAO
     public function informacoesAdicionais(Usuario $usuario) {
         try{
 
-            $id = $_SESSION['IdConta'];
+            $id = $_SESSION['ID_conta'];
             $foto = $usuario->getFotoDePerfil();
 
 
@@ -111,8 +109,8 @@ class usuarioDAO
         $usuario->setIdUsuario($row['idUsuario']);
         $usuario->setNomeUsuario($row['nomeUsuario']);
         $usuario->setEmailUsuario($row['emailUsuario']);
-        //$usuario->setTelefoneUsuario($row['telefoneUsuario']);
-        //$usuario->setDataNascimentoUsuario($row['dataNascimentoUsuario']);   
+        $usuario->setTelefoneUsuario($row['telefoneUsuario']);
+        $usuario->setDataNascimentoUsuario($row['nascUsuario']);   
         $usuario->setSenhaUsuario($row['senhaUsuario']);
 
         return $usuario;

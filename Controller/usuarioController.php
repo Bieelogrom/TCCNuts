@@ -23,12 +23,12 @@ if (isset($_POST['registrar'])) {
 
         session_start();
 
+        $_SESSION['ID_conta'] = conexao::getConexao()->lastInsertId();
         $_SESSION['nomeUsuario'] = $usuario->getNomeUsuario();
-        $_SESSION['Usuarioautenticado'] = 'SIM';
-
-        header('Location: ../Views/siteSerMae/adicionarFoto.php');
 
         $usuariodao->create($usuario);
+
+        header('Location: ../Views/siteSerMae/adicionarFoto.php');
     } else {
         header('Location: /index.php?login=erro');
     }
@@ -42,41 +42,41 @@ if (isset($_POST['registrar'])) {
         $sql = "SELECT * FROM tbusuario WHERE emailUsuario = '$email'";
 
         $resultado = conexao::getConexao()->query($sql);
-         $logado = $resultado->fetchAll();
-         $n = count($logado);
+        $logado = $resultado->fetchAll();
+        $n = count($logado);
 
 
-         if ($n == 1) {
-             $query = "SELECT idUsuario FROM tbusuario WHERE emailUsuario = ?";
+        if ($n == 1) {
+            $query = "SELECT idUsuario FROM tbusuario WHERE emailUsuario = ?";
 
-            echo $id =  $logado[0]['idUsuario'];
-            echo $hash = $logado[0]['senhaUsuario'];
-            echo $email = $logado[0]['emailUsuario'];
-    
-             $stmt = conexao::getConexao()->prepare($sql);
-             $stmt->bindParam("s", $email);
-    
-             $stmt->bindValue($id, $hash);
-             $stmt->fetch();
+            $id =  $logado[0]['idUsuario'];
+            $hash = $logado[0]['senhaUsuario'];
+            $email = $logado[0]['emailUsuario'];
 
-             if(password_verify($senha, $hash)){
-                 session_start();
+            $stmt = conexao::getConexao()->prepare($sql);
+            $stmt->bindParam("s", $email);
 
-    $_SESSION['idConta'] = $logado[0]['idUsuario'];
+            $stmt->bindValue($id, $hash);
+            $stmt->fetch();
 
-                 header('Location: ../Views/siteSerMae/home.php');
-                 exit();
-             }else{
-                 echo "erro";
+            if (password_verify($senha, $hash)) {
+                session_start();
+
+                $_SESSION['ID_conta'] = $logado[0]['idUsuario'];
+
+                header('Location: ../Views/siteSerMae/home.php');
+                exit();
+            } else {
+                header('Location: ../index.php?login=erro');
+                exit();
+            }
+        } else {
+            header('Location: ../index.php?login=erro');
+            exit();
+        }
+    } catch (PDOException $e) {
+        echo "ERRO: " . $e->getMessage();
     }
-
-         } else {
-             header('Location: ../index.php?login=erro');
-         }
-
-     } catch (PDOException $e) {
-         echo "ERRO: " . $e->getMessage();
-     }
 } else if (isset($_POST['atualizar'])) {
 
     try {
@@ -119,13 +119,10 @@ if (isset($_POST['registrar'])) {
 } else if (isset($_POST['atualizaPerfil'])) {
     session_start();
 
-    $id = $_POST['meuInputHidden'];
-
-    $_SESSION['IdConta'] = $id;
+    $id = $_SESSION['ID_conta'];
 
 
-
-     if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
+    if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
 
         $diretoriodasfotos = "../img/Perfis/";
 
@@ -141,7 +138,7 @@ if (isset($_POST['registrar'])) {
 
             header("Location: ../Views/siteSerMae/home.php");
 
-            $usuariodao->informacoesAdicionais($usuario); 
+            $usuariodao->informacoesAdicionais($usuario);
         }
-    } 
+    }
 }

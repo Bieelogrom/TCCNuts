@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include_once "Dao/conexãoDAO.php";
 include_once "Model/usuario.php";
@@ -33,7 +33,7 @@ include_once "Dao/usuarioDAO.php"
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="email" name="loginEmail" id="" placeholder="Email">  
+                        <input type="email" name="loginEmail" id="" placeholder="Email">
                     </div>
 
                     <div class="input-field">
@@ -67,15 +67,6 @@ include_once "Dao/usuarioDAO.php"
             <div class="signup-signup">
                 <form action="Controller/usuarioController.php" method="post" class="sign-up-form" id="myForm">
                     <h1 class="text-registro">Cadastro</h1>
-                    <?php
-                    if (isset($_GET['login']) && $_GET['login'] == "erro") {
-                    ?>
-                        <div style="text-align: center; font-weight:bold">
-                            <p class="text-danger">Usuário ou senha inválido(s)</p>
-                        </div>
-                    <?php
-                    }
-                    ?>
                     <!--progress bar-->
                     <div class="progressbar">
                         <div class="progress" id="progress"></div>
