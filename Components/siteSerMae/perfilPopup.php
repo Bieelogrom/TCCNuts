@@ -1,9 +1,4 @@
-<?php 
-
-include_once ("../../Dao/validador_acesso.php");
-
-?>
-  <!--inicio perfil-popUp-->
+<!--inicio perfil-popUp-->
   <div class="popup profile-popup">
         <div>
             <div class="popup-box profile-popup-box">

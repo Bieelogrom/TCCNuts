@@ -1,8 +1,4 @@
-<?php 
 
-include_once ("../../Dao/validador_acesso.php");
-
-?>
 <!--inicio Boas vindas-->
 <aside>
 <div class="boas-vindas">

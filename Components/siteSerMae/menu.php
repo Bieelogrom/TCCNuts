@@ -1,8 +1,3 @@
-<?php 
-
-include_once ("../../Dao/validador_acesso.php");
-
-?>
  <!--start aside bar-->
  <aside class="corpo-menu">
     <a class="menu-item active" href="./../siteSerMae/home.php">

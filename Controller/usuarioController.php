@@ -33,6 +33,7 @@ if (isset($_POST['registrar'])) {
         header('Location: /index.php?login=erro');
     }
 } else if (isset($_POST['login'])) {
+    session_start();
 
     $email = filter_input(INPUT_POST, 'loginEmail', FILTER_SANITIZE_EMAIL);
     $senha = trim(($_POST['loginSenha']));
@@ -47,8 +48,6 @@ if (isset($_POST['registrar'])) {
 
 
         if ($n == 1) {
-            $query = "SELECT idUsuario FROM tbusuario WHERE emailUsuario = ?";
-
             $id =  $logado[0]['idUsuario'];
             $hash = $logado[0]['senhaUsuario'];
             $email = $logado[0]['emailUsuario'];
@@ -60,9 +59,10 @@ if (isset($_POST['registrar'])) {
             $stmt->fetch();
 
             if (password_verify($senha, $hash)) {
-                session_start();
+              
 
                 $_SESSION['ID_conta'] = $logado[0]['idUsuario'];
+                $_SESSION['Usuarioautenticado'] = 'SIM';
 
                 header('Location: ../Views/siteSerMae/home.php');
                 exit();

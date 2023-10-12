@@ -1,8 +1,5 @@
-<?php
-
-include_once ("../../Dao/validador_acesso.php");
-
-
+<?php 
+include_once ("../../Dao/restrito.php");
 ?><!DOCTYPE html>
 <html lang="pt-br">
 <head>

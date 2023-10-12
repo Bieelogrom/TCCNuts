@@ -1,9 +1,4 @@
-<?php 
-
-include_once ("../../Dao/validador_acesso.php");
-
-?>
-    <!--navBar-->
+<!--navBar-->
     <nav>
         <div class="container nav-container">
             <img class="img-nav" src="./../../img/siteSerMae/home/navBar/logo (1).png" alt="">

@@ -78,10 +78,10 @@ include_once "Dao/usuarioDAO.php"
                     <!--steps-->
                     <div class="form-step form-step-active">
                         <div class="input-group">
-                            <input type="text" name="nome" id="username" placeholder="Nome" required>
+                            <input type="text" name="nome" id="username" placeholder="Nome" required pattern="[A-Za-z]{3,}">
                         </div>
                         <div class="input-group">
-                            <input type="text" name="sobrenome" id="position" placeholder="Sobrenome" required>
+                            <input type="text" name="sobrenome" id="position" placeholder="Sobrenome" required attern="[A-Za-z]{3,}">
                         </div>
                         <div class="">
                             <a href="#" class="btn btn-next width-50 ml-auto" id="open-modal">Próximo</a>
