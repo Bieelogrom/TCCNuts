@@ -17,16 +17,21 @@ if (isset($_POST['registrar'])) {
     $usuario->setDataNascimentoUsuario($d['dataNasc']);
 
     if ($d['password'] == $d['confirmPassword']) {
+
+
         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         $usuario->setSenhaUsuario($hash);
 
+        $usuariodao->create($usuario);
+        $id = conexao::getConexao()->lastInsertId();
+
         session_start();
 
-        $_SESSION['ID_conta'] = conexao::getConexao()->lastInsertId();
-        $_SESSION['nomeUsuario'] = $usuario->getNomeUsuario();
 
-        $usuariodao->create($usuario);
+
+        $_SESSION['ID_conta'] = $id;
+        $_SESSION['nomeUsuario'] = $usuario->getNomeUsuario();
 
         header('Location: ../Views/siteSerMae/adicionarFoto.php');
     } else {
@@ -59,7 +64,7 @@ if (isset($_POST['registrar'])) {
             $stmt->fetch();
 
             if (password_verify($senha, $hash)) {
-              
+
 
                 $_SESSION['ID_conta'] = $logado[0]['idUsuario'];
                 $_SESSION['nomeUsuario'] = $logado[0]['nomeUsuario'];
@@ -77,45 +82,6 @@ if (isset($_POST['registrar'])) {
         }
     } catch (PDOException $e) {
         echo "ERRO: " . $e->getMessage();
-    }
-} else if (isset($_POST['atualizar'])) {
-
-    try {
-        session_start();
-
-        $idUsuario = $_SESSION['ID_conta'];
-        $nomeUsuario = $_SESSION['nomeUsuario'];
-
-        $usuario->setNomeUsuario($nomeUsuario);
-        $usuario->setIdUsuario($idUsuario);
-
-        $usuariodao->update($usuario);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-} else if (isset($_POST['del'])) {
-
-    $id = trim($_POST['idusuario']);
-
-    try {
-        $sqlT = "DELETE FROM tbtelefone WHERE idUsuario = :idUsuario; DELETE FROM tbusuario WHERE idUsuario = :idUsuario";
-
-        $t_sql = conexao::getConexao()->prepare($sqlT);
-        $t_sql->bindValue("idUsuario", $id);
-
-        // $sql = "DELETE FROM tbusuario WHERE idUsuario = :idUsuario";
-
-        //$p_sql = conexao::getConexao()->prepare($sql);
-        //$p_sql->bindValue("idUsuario", $id);
-
-
-
-
-        header('Location: ../Views/admin/home.php');
-
-        $t_sql->execute();
-    } catch (Exception $e) {
-        echo "Erro ao Excluir usuario<br> $e <br>";
     }
 } else if (isset($_POST['atualizaPerfil'])) {
     session_start();
@@ -137,7 +103,7 @@ if (isset($_POST['registrar'])) {
 
             $_SESSION['fotoUsuario'] = $usuario->getFotoDePerfil();
 
-            header("Location: ../Views/siteSerMae/home.php");
+            header("Location: ../Views/siteSerMae/boasVindas.php");
 
             $usuariodao->informacoesAdicionais($usuario);
         }

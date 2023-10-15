@@ -2,7 +2,9 @@
 
 session_start();
 
-if(!isset($_SESSION['ID_conta'])){
+$_SESSION['ID_conta'];
+
+if(!isset($_SESSION['ID_conta']) || $_SESSION['ID_conta'] == "0"){
     header("Location: ../../index.php?acesso=erro");
     exit();
 } 

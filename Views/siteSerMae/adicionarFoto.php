@@ -1,10 +1,7 @@
 <?php
-
 include_once("../../Dao/conexãoDAO.php");
-include_once("../../Dao/validador_acesso.php");
-
+include_once("../../dao/restrito.php");
 $id = $_SESSION['ID_conta'];
-
 ?><!DOCTYPE html>
 <html lang="pt-br">
 
