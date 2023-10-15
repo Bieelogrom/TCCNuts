@@ -1,4 +1,5 @@
-<!--inicio adicionar post-->
+
+    <!--inicio adicionar post-->
     <div class="popup add-post-popup">
         <div>
             <form class="popup-box add-post-popup">

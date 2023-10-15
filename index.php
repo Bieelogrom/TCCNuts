@@ -54,12 +54,7 @@ include_once "Dao/usuarioDAO.php";
                     ?>
 
                     <input type="submit" class="btn solid" name="login">
-                    <p class="social-text">Gerencie agora:</p>
-                    <div class="social-media">
-                        <a href="Views/admin/loginADM.php" class="social-icon">
-                            <i class="fa-solid fa-cube"></i>
-                        </a>
-                    </div>
+                    <p class="social-text">Esqueci a senha</p>
                 </form>
             </div>
 
@@ -67,6 +62,7 @@ include_once "Dao/usuarioDAO.php";
             <div class="signup-signup">
                 <form action="Controller/usuarioController.php" method="post" class="sign-up-form" id="myForm">
                     <h1 class="text-registro">Cadastro</h1>
+                    <span id="msg"></span>
                     <!--progress bar-->
                     <div class="progressbar">
                         <div class="progress" id="progress"></div>
@@ -78,10 +74,10 @@ include_once "Dao/usuarioDAO.php";
                     <!--steps-->
                     <div class="form-step form-step-active">
                         <div class="input-group">
-                            <input type="text" name="nome" id="username" placeholder="Nome" required pattern="[A-Za-z]{3,}">
+                            <input type="text" class="input-nome input-form-validate"  name="nome" id="input-nome" placeholder="Nome" autocomplete="on">
                         </div>
                         <div class="input-group">
-                            <input type="text" name="sobrenome" id="position" placeholder="Sobrenome" required attern="[A-Za-z]{3,}">
+                            <input type="text" class="input-sobrenome input-form-validate" name="sobrenome" id="input-sobrenome" placeholder="Sobrenome">
                         </div>
                         <div class="">
                             <a href="#" class="btn btn-next width-50 ml-auto" id="open-modal">Próximo</a>
@@ -90,10 +86,10 @@ include_once "Dao/usuarioDAO.php";
                     </div>
                     <div class="form-step">
                         <div class="input-group">
-                            <input type="tel" name="phone" id="phone_with_ddd" placeholder="Telefone">
+                            <input type="tel" class="input-telefone input-form-validate" name="phone" id="input-telefone" placeholder="Telefone" autocomplete="on">
                         </div>
                         <div class="input-group">
-                            <input type="email" name="email" id="email" placeholder="E-mail" required>
+                            <input type="email" class="input-email input-form-validate" name="email" id="input-email" placeholder="E-mail" autocomplete="on">
                         </div>
                         <div class="btns-group">
                             <a href="#" class="btn btn-prev">Anterior</a>
@@ -103,7 +99,7 @@ include_once "Dao/usuarioDAO.php";
 
                     <div class="form-step">
                         <div class="input-group">
-                            <input type="date" name="dataNasc" id="dob" placeholder="Data nascimento">
+                            <input type="date" class="input-data input-form-validate" name="dataNasc" id="input-data" placeholder="Data nascimento">
                         </div>
                         <div class="btns-group">
                             <a href="#" class="btn btn-prev">Anterior</a>
@@ -113,10 +109,10 @@ include_once "Dao/usuarioDAO.php";
 
                     <div class="form-step">
                         <div class="input-group">
-                            <input type="password" name="password" id="password" placeholder="Senha">
+                            <input type="password" class="input-senha input-form-validate" name="password" id="input-senha" placeholder="Senha">
                         </div>
                         <div class="input-group">
-                            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar senha">
+                            <input type="password" class="input-confirma input-form-validate" name="confirmPassword" id="input-confirma" placeholder="Confirmar senha">
                         </div>
                         <div class="btns-group">
                             <a href="#" class="btn btn-prev">Anterior</a>
@@ -172,7 +168,8 @@ include_once "Dao/usuarioDAO.php";
             }
 
             function closeModal(b) {
-                opcaoModal[b].classList.remove('active')
+                opcaoModal[b].classList.remove('active');
+                window.location.href = "index.php"
             }
 
             openModal(0);
@@ -189,7 +186,7 @@ include_once "Dao/usuarioDAO.php";
 
 
     <script src="js/loginCadastro/app.js"></script>
-
+    <script src="js/loginCadastro/validacao.js"></script>
 </body>
 
 </html>

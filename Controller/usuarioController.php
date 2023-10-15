@@ -108,4 +108,16 @@ if (isset($_POST['registrar'])) {
             $usuariodao->informacoesAdicionais($usuario);
         }
     }
+} else if (isset($_POST['tipoDePerfil'])){
+    session_start();
+
+    $id = $_SESSION['ID_conta'];
+
+    $usuario->setTipoDePerfil($d['tipoPerfil']);
+
+    header("Location: ../Views/siteSerMae/home.php");
+
+    $usuariodao->tipoDaConta($usuario);
+
+
 }

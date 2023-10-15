@@ -1,4 +1,4 @@
-<!--navBar-->
+    <!--navBar-->
     <nav>
         <div class="container nav-container">
             <img class="img-nav" src="./../../img/siteSerMae/home/navBar/logo (1).png" alt="">
@@ -9,8 +9,8 @@
                 <i class="fa fa-search"></i>
                 <input type="search" placeholder="Procurar">
             </div>   
-            <div class="profile-picture" id="my-profile-picture">
-                    <img src="./../../img/siteSerMae/home/perfil/1.png" alt="" >
+            <div class="profile-picture">
+                <a href="./../perfilUser/perfil.php"><img src="./../../img/siteSerMae/home/perfil/1.png" alt=""></a>
             </div>
     </div>
     </nav>

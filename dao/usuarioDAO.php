@@ -8,14 +8,14 @@ class usuarioDAO
     {
         try {
             $sql = "INSERT INTO tbusuario (nomeUsuario, telefoneUsuario, emailUsuario, nascUsuario, senhaUsuario) VALUES (:nome, :phone, :email, :dataNasc, :senha); ";
-    
+
             $query = conexao::getConexao()->prepare($sql);
             $query->bindValue(':nome', $usuario->getNomeUsuario());
             $query->bindValue(':phone', $usuario->getTelefoneUsuario());
             $query->bindValue(':email', $usuario->getEmailUsuario());
             $query->bindValue(':dataNasc', $usuario->getDataNascimentoUsuario());
             $query->bindValue(':senha', $usuario->getSenhaUsuario());
-    
+
             $query->execute();
         } catch (PDOException $e) {
             echo "Erro na inserção: " . $e->getMessage();
@@ -73,8 +73,9 @@ class usuarioDAO
         }
     }
 
-    public function informacoesAdicionais(Usuario $usuario) {
-        try{
+    public function informacoesAdicionais(Usuario $usuario)
+    {
+        try {
 
             $id = $_SESSION['ID_conta'];
             $foto = $usuario->getFotoDePerfil();
@@ -82,22 +83,42 @@ class usuarioDAO
 
             $sql = "UPDATE tbusuario set fotoUsuario = :foto WHERE idUsuario = :id";
             $stmt = conexao::getConexao()->prepare($sql);
-            $stmt ->bindParam(':foto', $foto);
-            $stmt ->bindParam(':id', $id);
+            $stmt->bindParam(':foto', $foto);
+            $stmt->bindParam(':id', $id);
 
 
 
-            if($stmt->execute()){
-               echo "FOTO ATUALIZADA COM SUCESSO!";
-
-            }else{
+            if ($stmt->execute()) {
+                echo "FOTO ATUALIZADA COM SUCESSO!";
+            } else {
                 echo "Erro ao salvar foto de perfil.";
             }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function tipoDaConta(Usuario $usuario) 
+    {
+        try{ 
+            
+            $id = $_SESSION['ID_conta'];
+            $tipoPerfil = $usuario->getTipoDePerfil();
+
+
+            $sql = "UPDATE tbusuario set tipoConta = :perfil WHERE idUsuario = :id";
+            $stmt = conexao::getConexao()->prepare($sql);
+            $stmt->bindParam(':perfil', $tipoPerfil);
+            $stmt->bindParam(':id', $id);
 
 
 
-
-        }catch(PDOException $e){
+            if ($stmt->execute()) {
+                echo "Tipo ATUALIZADo COM SUCESSO!";
+            } else {
+                echo "Erro ao alterar tipo de perfil.";
+            }
+        }catch(PDOException $e) {
             echo $e->getMessage();
         }
     }
@@ -110,7 +131,7 @@ class usuarioDAO
         $usuario->setNomeUsuario($row['nomeUsuario']);
         $usuario->setEmailUsuario($row['emailUsuario']);
         $usuario->setTelefoneUsuario($row['telefoneUsuario']);
-        $usuario->setDataNascimentoUsuario($row['nascUsuario']);   
+        $usuario->setDataNascimentoUsuario($row['nascUsuario']);
         $usuario->setSenhaUsuario($row['senhaUsuario']);
 
         return $usuario;
