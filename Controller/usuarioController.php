@@ -11,31 +11,37 @@ $d = filter_input_array(INPUT_POST);
 
 if (isset($_POST['registrar'])) {
 
+    $email = $d['email'];
+
     $usuario->setNomeUsuario($d['nome'] . ' ' . $d['sobrenome']);
     $usuario->setTelefoneUsuario($d['phone']);
     $usuario->setEmailUsuario($d['email']);
     $usuario->setDataNascimentoUsuario($d['dataNasc']);
 
-    if ($d['password'] == $d['confirmPassword']) {
+    $sql = "SELECT emailUsuario FROM tbusuario WHERE emailUsuario = '$email'";
+    $resultado = conexao::getConexao()->query($sql);
+    $stmt = $resultado->fetch(PDO::FETCH_ASSOC);
 
-
-        $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-        $usuario->setSenhaUsuario($hash);
-
-        $usuariodao->create($usuario);
-        $id = conexao::getConexao()->lastInsertId();
-
-        session_start();
-
-
-
-        $_SESSION['ID_conta'] = $id;
-        $_SESSION['nomeUsuario'] = $usuario->getNomeUsuario();
-
-        header('Location: ../Views/siteSerMae/adicionarFoto.php');
+    if ($resultado->rowCount() == 1) {
+        header('Location: ../index.php?cadastro=erro');
     } else {
-        header('Location: /index.php?login=erro');
+        if ($d['password'] == $d['confirmPassword']) {
+            $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+            $usuario->setSenhaUsuario($hash);
+
+            $usuariodao->create($usuario);
+            $id = conexao::getConexao()->lastInsertId();
+
+            session_start();
+
+            $_SESSION['ID_conta'] = $id;
+            $_SESSION['nomeUsuario'] = $usuario->getNomeUsuario();
+
+            header('Location: ../Views/siteSerMae/adicionarFoto.php');
+        } else {
+            header('Location: /index.php?login=erro');
+        }
     }
 } else if (isset($_POST['login'])) {
     session_start();
@@ -108,7 +114,7 @@ if (isset($_POST['registrar'])) {
             $usuariodao->informacoesAdicionais($usuario);
         }
     }
-} else if (isset($_POST['tipoDePerfil'])){
+} else if (isset($_POST['tipoDePerfil'])) {
     session_start();
 
     $id = $_SESSION['ID_conta'];
@@ -118,6 +124,4 @@ if (isset($_POST['registrar'])) {
     header("Location: ../Views/siteSerMae/home.php");
 
     $usuariodao->tipoDaConta($usuario);
-
-
 }
