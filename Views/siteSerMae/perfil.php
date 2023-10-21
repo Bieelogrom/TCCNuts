@@ -1,105 +1,200 @@
-<?php 
-include_once ("../../Dao/restrito.php");
-?><!DOCTYPE html>
+<?php
+session_start();    
+include_once("../../dao/atualizarSessão.php");
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/siteSerMae/home.css">
     <link rel="stylesheet" href="../../css/siteSerMae/perfil.css">
+    <link rel="stylesheet" href="../../css/siteSerMae/boasVindas.css">
+    <link rel="stylesheet" href="../../css/siteSerMae/inicioSite.css">
+    <script src="../../js/atualizarSessão.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Perfil - Ser Mãe</title>
-    <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    
+    <title>Seu perfil</title>
 </head>
+
 <body>
-
     <!--navBar-->
     <?php
-    include('../../components/siteSerMae/navBar.php');   
+    include('../../components/siteSerMae/navBar.php');
     ?>
     <!--navBar-->
 
+    <!--Main-->
     <main>
+        <div class="container main-container">
 
-    <div class="container main-container">
-    <div class="main-left">
+            <!--Main left inicio-->
+            <div class="main-left">
+                <!--inicio Boas vindas-->
+                <?php
+                include('../../components/siteSerMae/boasVindas.php')
+                ?>
+                <!--final Boas vindas-->
 
-    <!--inicio Boas vindas-->
-    <?php
-    include('../../components/siteSerMae/boasVindas.php')
-    ?>
-    <!--final Boas vindas-->
-
-    <!--start aside bar-->
-    <?php
-    include('../../components/siteSerMae/menu.php')
-    ?>
-    <!--end aside bar-->
-    </div>
+                <!--start aside bar-->
+                <?php
+                include('../../components/siteSerMae/menu.php')
+                ?>
+                <!--end aside bar-->
+            </div>
+            <!--Main left fim-->
 
 
-    <div class="header__wrapper">
-        <header></header>
-        <div class="cols__container">
-            <div class="left__col">
-                <div class="img__container">
-                    <img src="../../img/perfis/<?= $_SESSION['fotoUsuario'] ?>" alt="Foto de perfil"/>
-                    <span></span>
-                    </div>
-                        <h2><?= $_SESSION['nomeUsuario'] ?></h2>
-                        <p>Lara - 2 aninhos e Thomas - 35 semanas</p>
-                        <p>mari.lonzo@gmail.com</p>
+            <!--começo do perfil inicio-->
+            <div class="container-profile">
+                <div class="fluid-profile">
+                    <div class="area-perfil">
+                        <div class="box-perfil">
 
-                         <ul class="about">
-                            <li><span>8</span> Postagens</li>
-                            <li><span>40</span> Amigas</li>
-                            <li><span>4</span> Favoritas</li>
-                        </ul>
+                            <!--informações do perfil inicio-->
+                            <div class="informacao-perfil">
 
-                        <div class="content">
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Eius est odio fuga sequi distinctio atque, 
-                                officiis voluptatibus, magnam iusto dignissimos aliquam!
-                                Enim quo aperiam veritatis. Aliquid voluptatum at aut a!
-                            </p>
+                                <!--imagens do perfil inicio-->
+                                <div class="papel-parede-img-perfil">
+                                    <img data-bs-toggle="modal" class="papel-parede-img" src="../../img/siteSerMae/perfil/capaIMG/fundo.jpg" alt="">
 
-                            <ul>
-                                <li><i class="fab fa-twitter"></i></li>
-                                <li><i class="fab fa-instagram"></i></li>
-                                <li><i class="fab fa-facebook"></i></li>
-                                <li><i class="fab fa-linkedin"></i></li>
-                            </ul>
-                        </div>
-                    </div>
+                                    <div class="profile-picture" id="my-profile-picture">
+                                        <img class="perfil-img" src="../../img/siteSerMae/perfil/capaIMG/profile.png" alt="">
+                                    </div>
+                                </div>
+                                <!--imagens do perfil final-->
 
-                    <div class="right__col">
-                        
-                     
-                        <div class="photos">
-                            <img src="./../../img/siteSerMae/perfil/feed1.png" alt="Foto">
-                            <img src="./../../img/siteSerMae/perfil/feed2.png" alt="Foto">
-                            <img src="./../../img/siteSerMae/perfil/feed3.png" alt="Foto">
-                            <img src="./../../img/siteSerMae/perfil/feed4.png" alt="Foto">
-                            <img src="./../../img/siteSerMae/perfil/feed5.png" alt="Foto">
-                            <img src="./../../img/siteSerMae/perfil/feed6.png" alt="Foto">
+                                <!--bio inicio-->
+                                <div class="area-bio">
+
+                                    <!--nomes usuária-->
+                                    <div class="usuario-bio">
+                                        <div class="area-nick-nome">
+                                            <div class="nick">
+                                                <h1><?= $_SESSION['nomeUsuario']; ?></h1>
+                                            </div>
+                                            <div class="perfil-mulher">
+                                                <h1><?= $_SESSION['tipoPerfil']; ?></h1>
+                                            </div>
+                                        </div>
+                                        <div class="bio">
+                                            <p>Amo meus filhos lindos</p>
+                                        </div>
+
+                                        <!--Botão editar perfil inicio-->
+                                        <button class="btn-editar-perfil" id="open-modal">Editar</button>
+                                        <?php
+                                        if ($_SESSION['nivelConta'] == 3) { ?>
+                                            <button onclick="admin()" class="btn-editar-perfil">Tela ADMIN</button>
+                                        <?php }
+                                        ?>
+                                        <div id="fade" class="hide"></div>
+                                        <div id="modal" class="hide">
+
+                                            <div class="modal-header">
+                                                <h2>Editar o seu Perfil</h2>
+                                                <button id="close-modal">Voltar</button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <!--dados inicio-->
+                                                <div class="input-group">
+                                                    <h3>E-mail:</h3>
+                                                    <input type="text">
+                                                </div>
+
+                                                <div class="input-group">
+                                                    <h3>Nome Usuária:</h3>
+                                                    <input type="text" name="username" id="username">
+                                                </div>
+
+                                                <div class="input-group">
+                                                    <h3>Nome Completo:</h3>
+                                                    <input type="text" name="position" id="position">
+                                                </div>
+
+                                                <div class="input-group">
+                                                    <h3>Telefone:</h3>
+                                                    <input type="text" name="phone" id="phone">
+                                                </div>
+
+
+                                                <!--dropDown-->
+                                                <div class="dropdown">
+                                                    <div class="select">
+                                                        <span class="selected">Escolha seu perfil</span>
+                                                        <div class="caret"></div>
+                                                    </div>
+                                                    <ul class="menu">
+                                                        <li class="active">Mãe</li>
+                                                        <li>Mãe solo</li>
+                                                        <li>Tentante</li>
+                                                        <li>Gestante</li>
+                                                    </ul>
+                                                </div>
+                                                <!--dados final-->
+                                                <input type="submit" class="btn btn-primary btn-lg" value="Salvar Alterações">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <!--Botão editar perfil final-->
+
+                                    <!--nomes usuária-->
+
+
+                                    <!--descrição do perfil inicio-->
+                                    <div class="seguindo-seguidores">
+
+                                        <div class="seguindo">
+                                            <div class="numeros-seguir">
+                                                <p>0</p>
+                                            </div>
+                                            <div class="seguir-text">
+                                                <h1>Seguindo</h1>
+                                            </div>
+                                        </div>
+
+                                        <div class="seguidores">
+                                            <div class="numeros-seguir">
+                                                <p>0</p>
+                                            </div>
+                                            <div class="seguir-text">
+                                                <h1>Seguidores</h1>
+                                            </div>
+                                        </div>
+
+                                        <!--descrição do perfil final-->
+                                    </div>
+                                    <!--bio final-->
+
+                                </div>
+                            </div>
+                            <!--informações do perfil final-->
+
                         </div>
                     </div>
                 </div>
             </div>
+            <!--começo do perfil final-->
 
 
+            <!--publicações, favoritos e dicas - inicio-->
+            <div class="options-perfil">
+                <ul class="nav-list-option">
+                    <li><a href="perfil.php">Publicações</a></li>
+                    <li><a href="perfilFavoritos.php">Favoritos</a></li>
+                    <li><a href="perfilDicas.php">Dicas</a></li>
+                </ul>
+            </div>
+            <!--publicações, favoritos e dicas - final-->
+
+
+
+
+        </div>
     </main>
-    </div>
-
-
-    
-
 
 
     <!--Inicio popup aria-->
@@ -116,6 +211,15 @@ include_once ("../../Dao/restrito.php");
     <!--final adicionar post-->
     <!--Final popup aria-->
 
-<script src="../../js/siteSerMae/site.js"></script>
+
+    <script src="../../js/siteSerMae/site.js"></script>
+    <script src="../../js/siteSerMae/perfil.js"></script>
+    <script src="../../js/siteSerMae/bemVinda.js"></script>
+    <script>
+        function admin() {
+            window.location.href = "../admin/home.php";
+        }
+    </script>
 </body>
+
 </html>

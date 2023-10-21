@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+include_once ("../../dao/restrito.php");
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +9,7 @@
     <link rel="stylesheet" href="../../css/siteSerMae/boasVindas.css">
     <link rel="stylesheet" href="./css/dica.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Dicas - Saúde Física</title>
+    <title>Dicas - Maternidade</title>
 </head>
 <body>
     
@@ -38,13 +40,13 @@
     <!--Main left fim-->
 
 
-   <!--=================================inicio dica-mental=============================-->
-   <div class="corpo-dicas-mentais">
+ <!--=================================inicio dica-mental=============================-->
+ <div class="corpo-dicas-mentais">
 
-       <!--inicio nav-->
-       <div class="nav-mental">
+     <!--inicio nav-->
+     <div class="nav-mental">
         <div class="name-dica">
-            <h2>SaúdeFísica</h2>
+            <h2>Maternidade</h2>
 
             <!--Modal inicio-->
             <button class="btn-dica btn" id="open-modal">Adicionar dica</button>
@@ -127,7 +129,6 @@
             <!--Modal fim-->
         </div>
 
-
     </div>
     <!--final corpo dicas-mentais-->
     </div>
@@ -154,7 +155,6 @@
     ?>
     <!--final adicionar post-->
     <!--Final popup aria-->
-
 
 <script src="./../../js/siteSerMae/site.js"></script>
 <script src="./js/modal.js"></script>

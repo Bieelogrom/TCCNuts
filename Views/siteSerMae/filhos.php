@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+include_once ("../../dao/restrito.php");
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +9,10 @@
     <link rel="stylesheet" href="../../css/siteSerMae/boasVindas.css">
     <link rel="stylesheet" href="./css/dica.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Dicas - Saúde Mental</title>
+    <title>Dicas - Cuidados ao seu/sua filho(a)</title>
 </head>
 <body>
-
+    
      <!--navBar-->
      <?php
     include('../../components/navBar.php');   
@@ -40,11 +42,11 @@
 
     <!--=================================inicio dica-mental=============================-->
     <div class="corpo-dicas-mentais">
-        
-    <!--inicio nav-->
-    <div class="nav-mental">
+
+        <!--inicio nav-->
+        <div class="nav-mental">
         <div class="name-dica">
-            <h2>SaúdeMental</h2>
+            <h2>SeusFilhos</h2>
 
             <!--Modal inicio-->
             <button class="btn-dica btn" id="open-modal">Adicionar dica</button>
@@ -127,6 +129,7 @@
             <!--Modal fim-->
         </div>
 
+
     </div>
     <!--final corpo dicas-mentais-->
     </div>
@@ -135,6 +138,8 @@
 
     </div>
 </main>
+
+
    
 
 
@@ -152,11 +157,9 @@
     <!--final adicionar post-->
     <!--Final popup aria-->
 
-
 <script src="./../../js/siteSerMae/site.js"></script>
-<script src="./../../js/siteSerMae/bemVinda.js"></script>
 <script src="./js/modal.js"></script>
-
+<script src="./../../js/siteSerMae/bemVinda.js"></script>
 <!--ADD input inicio-->
 <script>
        document.addEventListener("DOMContentLoaded", function() {
@@ -177,7 +180,7 @@
             camposContainer.appendChild(novoCampo);
 
             if (contadorCampos === 4) {
-                adicionarCampoButton.disabled = true; 
+                adicionarCampoButton.disabled = true; // Desativa o botão após atingir o limite de 5 campos
             }
         }
     });
@@ -207,6 +210,5 @@ window.addEventListener("click", function(event) {
 });
 </script>
 <!--modal add descrição fim-->
-
 </body>
 </html>

@@ -1,12 +1,11 @@
-<?php 
+<?php
 include_once ("../../Dao/restrito.php");
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css//siteSerMae/home.css">
+    <link rel="stylesheet" href="../../css/siteSerMae/inicioSite.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--link swiper-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -16,7 +15,7 @@ include_once ("../../Dao/restrito.php");
 
     <!--navBar-->
     <?php
-    include('../../components/siteSerMae/navBar.php');   
+    include('../../Components/siteSerMae/navBar.php');   
     ?>
     <!--navBar-->
 
@@ -29,13 +28,13 @@ include_once ("../../Dao/restrito.php");
     <div class="main-left">
                     <!--inicio Boas vindas-->
                     <?php
-                    include('../../components/siteSerMae/boasVindas.php')
+                    include('../../Components/siteSerMae/boasVindas.php')
                     ?>
                     <!--final Boas vindas-->
 
                     <!--start aside bar-->
                     <?php
-                    include('../../components/siteSerMae/menu.php')
+                    include('../../Components/siteSerMae/menu.php')
                     ?>
                     <!--end aside bar-->
     </div>
@@ -54,7 +53,7 @@ include_once ("../../Dao/restrito.php");
                             <div class="story swiper-slide">
                                 <img src="#" alt="">
                                 <div class="profile-picture"  id="my-profile-picture">
-                                    <img src="./../../img/siteSerMae/home/navBar/eu.png" alt="">
+                                    <img src="../../img/siteSerMae/home/navBar/eu.png" alt="">
                                 </div>
                                 <label for="add-story" class="add-story">
                                     <i class="fa fa-add" id="upload"></i>
@@ -66,7 +65,7 @@ include_once ("../../Dao/restrito.php");
                             <div class="story swiper-slide">
                                 <img src="./../../img/siteSerMae/home/postStory/1.jpg" alt="">
                                 <div class="profile-picture">
-                                    <img src="./../../img/siteSerMae/home/stories/1.jpg" alt="">
+                                    <img src="../../img/siteSerMae/home/stories/1.jpg" alt="">
                                 </div>
                             </div>
 
@@ -149,7 +148,6 @@ include_once ("../../Dao/restrito.php");
                         <div class="interaction-button">
                             <span><i class="fa fa-heart"></i></span>
                             <span><i class="fa fa-comment-dots"></i></span>
-                            <span><i class="fa fa-link"></i></span>
                         </div>
                         <div class="bookmark">
                             <i class="fa fa-bookmark"></i>
@@ -182,7 +180,7 @@ include_once ("../../Dao/restrito.php");
                     <div class="feed-top">
                         <div class="user">
                             <div class="profile-picture">
-                                <img src="./../../img/siteSerMae/home/melhoresAmigos/2.jpg" alt="">
+                                <a href="./../perfilVisitar/perfil.php"><img src="./../../img/siteSerMae/home/melhoresAmigos/2.jpg" alt=""></a>
                             </div>
                             <div class="info">
                                 <h3>Raissa lima</h3>
@@ -208,7 +206,6 @@ include_once ("../../Dao/restrito.php");
                         <div class="interaction-button">
                             <span><i class="fa fa-heart"></i></span>
                             <span><i class="fa fa-comment-dots"></i></span>
-                            <span><i class="fa fa-link"></i></span>
                         </div>
                         <div class="bookmark">
                             <i class="fa fa-bookmark"></i>
@@ -263,7 +260,6 @@ include_once ("../../Dao/restrito.php");
                         <div class="interaction-button">
                             <span><i class="fa fa-heart"></i></span>
                             <span><i class="fa fa-comment-dots"></i></span>
-                            <span><i class="fa fa-link"></i></span>
                         </div>
                         <div class="bookmark">
                             <i class="fa fa-bookmark"></i>
@@ -352,53 +348,21 @@ include_once ("../../Dao/restrito.php");
                     <!--final melhores amigos-->
 
                     
-                    <!--inicio comunidades-->
-                    <div class="corpo-comunidades">
-                        <h3>comunidades</h3>
+                    <!--inicio dicas destaques-->
+                    <div class="corpo-destaques">
+                        <h3>Dicas destaques</h3>
 
-                        <div class="request-comu">
-                                <div class="img-grupo">
-                                    <img src="./../../img/siteSerMae/home/imgGrupos/1.jpg" alt="">
-                                </div>
-                            <h5>Grupo flor de mim</h5>
-                            <button class="button-grupo" type="submit">Entrar</button>
-                        </div>
+                        <div class="dicas-destaques">
 
-                        <div class="request-comu">
-                            <div class="img-grupo">
-                                <img src="./../../img/siteSerMae/home/imgGrupos/1.jpg" alt="">
+                            <div class="card-dicas">
+                                <h3 class="txt-dicas">Saúde para a vida</h3>
+                                <img class="img-dica" src="../../img/siteSerMae/home/destaques/1.png" alt="">
                             </div>
-                        <h5>Grupo flor de mim</h5>
-                        <button class="button-grupo" type="submit">Entrar</button>
+
                         </div>
-
-                        <div class="request-comu">
-                            <div class="img-grupo">
-                                <img src="./../../img/siteSerMae/home/imgGrupos/1.jpg" alt="">
-                            </div>
-                        <h5>Grupo flor de mim</h5>
-                        <button class="button-grupo" type="submit">Entrar</button>
-                        </div>
-
-                        <div class="request-comu">
-                            <div class="img-grupo">
-                                <img src="./../../img/siteSerMae/home/imgGrupos/1.jpg" alt="">
-                            </div>
-                        <h5>Grupo flor de mim</h5>
-                        <button class="button-grupo" type="submit">Entrar</button>
-                        </div>
-
-                        <div class="request-comu">
-                            <div class="img-grupo">
-                                <img src="./../../img/siteSerMae/home/imgGrupos/1.jpg" alt="">
-                            </div>
-                        <h5>Grupo flor de mim</h5>
-                        <button class="button-grupo" type="submit">Entrar</button>
-                        </div>
-
-
+                       
                     </div>
-                    <!--final comunidades-->
+                    <!--dicas destaques-->
     </div>
     <!--Main right fim-->
 
@@ -412,13 +376,13 @@ include_once ("../../Dao/restrito.php");
     <!--Inicio popup aria-->
     <!--final perfil-popUp-->
     <?php
-    include('../../components/siteSerMae/perfilPopup.php')
+    include('../../Components/siteSerMae/perfilPopup.php')
     ?>
     <!--inicio perfil-popUp-->
 
     <!--inicio adicionar post-->
     <?php
-    include('../../components/siteSerMae/adicionarPost.php')
+    include('../../Components/siteSerMae/adicionarPost.php')
     ?>
     <!--final adicionar post-->
     <!--Final popup aria-->

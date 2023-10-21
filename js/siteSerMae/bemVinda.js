@@ -26,4 +26,3 @@ dropdowns.forEach(dropdown => {
     });
   });
 });
-

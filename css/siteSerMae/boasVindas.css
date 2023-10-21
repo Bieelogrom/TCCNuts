@@ -15,7 +15,7 @@
   --preto: #000;
 }
 body {
-  background-image: url(/img/siteSerMae/bemvinda/fundo.svg);
+  background-image: url(./../../img/siteSerMae/boasVindas/fundo.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -175,6 +175,4 @@ body {
     margin-left: 1rem;
   }
 }
-
-
 

@@ -23,14 +23,6 @@ const removeActive = ()=>{
     })
 } 
 
-
-//notificação//
-document.querySelector('#Notify-box').addEventListener('click',()=>{
-    document.querySelector('.notification-box').style.display='block'
-    document.querySelector('#ntCounter1').style.display='none'
-})
-
-
 //Mensagem//
 document.querySelector('#messageMenu').addEventListener('click',()=>{
     document.querySelector('#notfyCounter2').style.display='none'    

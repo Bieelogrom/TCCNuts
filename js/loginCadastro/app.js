@@ -10,8 +10,6 @@ sign_in_btn.addEventListener('click', () => {
     container.classList.remove('sign-up-mode');
 });
 
-//modal
-
 
 
 
@@ -22,17 +20,13 @@ const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
 
-
-
 let formStepsNum = 0;   
 
 nextBtns.forEach((btn) => {
     btn.addEventListener("click", () =>{
-            formStepsNum++;
-            updateFormSteps();   
-            updateProgressbar();  
-        
-
+        formStepsNum++;
+        updateFormSteps();   
+        updateProgressbar();     
     });
 });
 
@@ -67,3 +61,4 @@ function updateProgressbar(){
     progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + '%';
 
 }
+

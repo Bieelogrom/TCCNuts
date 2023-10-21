@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+include_once ("../../dao/restrito.php");
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +13,7 @@
 <body>
      <!--navBar-->
      <?php
-    include('../../components/navBar.php');   
+    include('../../components/siteSerMae/navBar.php');   
     ?>
     <!--navBar-->
 
@@ -23,13 +25,13 @@
     <div class="main-left">
                     <!--inicio Boas vindas-->
                     <?php
-                    include('../../components/boasVindas.php')
+                    include('../../components/siteSerMae/boasVindas.php')
                     ?>
                     <!--final Boas vindas-->
 
                     <!--start aside bar-->
                     <?php
-                    include('../../components/menu.php')
+                    include('../../components/siteSerMae/menu.php')
                     ?>
                     <!--end aside bar-->
     </div>
@@ -93,7 +95,7 @@
             <div class="cards-1">
                 <h3>Saúde Mental</h3>
                 <div class="img-dicas">
-                    <img class="image-card-dicas" src="./../../img/siteSerMae/dicas/cards/mental.jpg" alt="">
+                    <img class="image-card-dicas" src="../../img/siteSerMae/dicas/cards/mental.jpg" alt="">
                 </div>
                 <p>Auto-ajuda</p>
                 <a href="mental.php"><button class="btn btn-dica-card">Aqui</button></a>
@@ -102,7 +104,7 @@
             <div class="cards-1">
                 <h3>Saúde Física</h3>
                 <div class="img-dicas">
-                    <img class="image-card-dicas" src="./../../img/siteSerMae/dicas/cards/fisica.jpg" alt="">
+                    <img class="image-card-dicas" src="../../img/siteSerMae/dicas/cards/fisica.jpg" alt="">
                 </div>
                 <p>Cuide-se!</p>
                 <a href="fisica.php"><button class="btn btn-dica-card">Aqui</button></a>
@@ -113,7 +115,7 @@
             <div class="cards-2">
                 <h3>Maternidade</h3>
                 <div class="img-dicas">
-                    <img class="image-card-dicas" src="./../../img/siteSerMae/dicas/cards/mater.jpg" alt="">
+                    <img class="image-card-dicas" src="../../img/siteSerMae/dicas/cards/mater.jpg" alt="">
                 </div>
                 <p>Cuidados</p>
                 <a href="maternidade.php"><button class="btn btn-dica-card">Aqui</button></a>
@@ -122,7 +124,7 @@
             <div class="cards-2">
                 <h3>Cuidados a criança</h3>
                 <div class="img-dicas">
-                    <img class="image-card-dicas" src="./../../img/siteSerMae/dicas/cards/filhos.png" alt="">
+                    <img class="image-card-dicas" src="../../img/siteSerMae/dicas/cards/filhos.png" alt="">
                 </div>
                 <p>Dicas diversas</p>
                 <a href="filhos.php"><button class="btn btn-dica-card">Aqui</button></a>
@@ -144,18 +146,18 @@
     <!--Inicio popup aria-->
     <!--final perfil-popUp-->
     <?php
-    include('../../components/perfilPopup.php')
+    include('../../components/siteSerMae/perfilPopup.php')
     ?>
     <!--inicio perfil-popUp-->
 
     <!--inicio adicionar post-->
     <?php
-    include('../../components/adicionarPost.php')
+    include('../../components/siteSerMae/adicionarPost.php')
     ?>
     <!--final adicionar post-->
     <!--Final popup aria-->
 
 
-<script src="./../../js/siteSerMae/site.js"></script>
+<script src="../../js/siteSerMae/site.js"></script>
 </body>
 </html>

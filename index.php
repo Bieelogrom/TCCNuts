@@ -3,8 +3,6 @@ include_once "Dao/conexãoDAO.php";
 include_once "Model/usuario.php";
 include_once "Dao/usuarioDAO.php";
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -162,9 +160,8 @@ include_once "Dao/usuarioDAO.php";
                     <button class="btnOK" onclick="closeModal(0)">OK</button>
                 </div>
             </div>
-        <?php } ?>
+        <?php }else if (($_GET['cadastro']))  { ?>
         
-        <?php if(($_GET['cadastro'])) { ?>
         <div class="modal-containerBanir">
             <div class="modal">
                 <h2>Erro de cadastro</h2>
