@@ -20,6 +20,9 @@ try {
     $_SESSION['email'] = $row['emailUsuario'];
     $_SESSION['senha'] = $row['senhaUsuario'];
     $_SESSION['apelido'] = $row['apelidoUsuario'];
+    $_SESSION['fotoPerfil'] = $row['fotoUsuario'];
+    $_SESSION['biografiaUsuario'] = $row['bioUsuario'];
+    $_SESSION['fotoCapa'] = $row['capaUsuario'];
     $_SESSION['dataNascimento'] = $row['nascUsuario'];
     $_SESSION['telefone'] = $row['telefoneUsuario'];
     $_SESSION['nivelConta'] = $row['nivelConta'];

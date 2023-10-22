@@ -5,7 +5,7 @@
                 <h1></h1>
                 <p></p>
                 <div id="my-profile-picture">
-                    <img src="./../../img/siteSerMae/home/perfil/1.png">
+                    <img src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>">
                 </div>
                 <label for="profile-upload" class="btn btn-primary btn-lg">Escolha uma foto</label>
                 <input type="file" accept="image/jpg, image/png, image/jpeg" id="profile-upload">

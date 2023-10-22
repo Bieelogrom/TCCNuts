@@ -1,12 +1,13 @@
-<?php 
-    include('../../Dao/validador_acesso.php')
+<?php
+session_start();    
+include_once("../../dao/atualizarSessão.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SideBar</title>
     <link rel="stylesheet" href="style.css">
 
     <!-- BoxIcons CDN links -->
@@ -16,7 +17,7 @@
     <!-- Menu Lateral -->
     <div class="sidebar open">
         <div class="logo-details">
-            <i class='bx bxl-c-plus-plus'></i>
+            <img src="" alt="">
             <span class="logo-name">serMãe</span>
         </div>
         
@@ -30,23 +31,16 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="../../Views/ADMIN/mensagem.php">
                     <i class='bx bx-envelope'></i>
                     <span class="link-name">Mensagens</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="../../Views/ADMIN/denuncia.php">
                     <i class='bx bxs-report'></i>
                     <span class="link-name">Denuncias</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="../../Views/admin/analise.php">
-                    <i class='bx bxs-bar-chart-alt-2'></i>
-                    <span class="link-name">Analises</span>
                 </a>
             </li>
 
@@ -58,7 +52,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="../../Views/admin/configuracoes.php">
                     <i class='bx bx-cog'></i>
                     <span class="link-name">Configurações</span>
                 </a>
@@ -68,10 +62,10 @@
         <li>
         <div class="profile-details">
             <div class="profile-content">
-                <img src="../../img/ADMIN/perfil.png" alt="Foto ADM">
+                <img src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="Foto ADM">
             </div>
             <div class="name-job">
-                <div class="profile-name"><?php echo $_SESSION['nomeAdmin']; ?></div>
+                <div class="profile-name"><?= $_SESSION['nomeUsuario']; ?></div>
                 <div class="job">ADM</div>
             </div>
             <a href="../../Dao/logoff.php">

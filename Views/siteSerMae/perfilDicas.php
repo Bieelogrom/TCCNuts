@@ -1,5 +1,6 @@
 <?php
-include_once ("../../dao/restrito.php");
+session_start();    
+include_once("../../dao/atualizarSessão.php");
 ?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -53,7 +54,7 @@ include_once ("../../dao/restrito.php");
                                 <img data-bs-toggle="modal" class="papel-parede-img" src="./../../img/siteSerMae/perfil/capaIMG/fundo.jpg" alt="">
                                 
                                 <div class="profile-picture" id="my-profile-picture">
-                                <img class="perfil-img" src="./../../img/siteSerMae/home/perfil/1.png" alt="">
+                                <img class="perfil-img" src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="">
                                 </div>
                             </div>
                             <!--imagens do perfil final-->
@@ -72,7 +73,7 @@ include_once ("../../dao/restrito.php");
                                         </div>
                                     </div>
                                     <div class="bio">
-                                        <p>Amo meus filhos lindos</p>
+                                        <p><?= $_SESSION['biografiaUsuario'] ?></p>
                                     </div>
 
                                         <!--Botão editar perfil inicio-->

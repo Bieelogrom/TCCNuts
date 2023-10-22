@@ -1,5 +1,6 @@
 <?php
-include_once ("../../dao/restrito.php");
+session_start();    
+include_once("../../dao/atualizarSessão.php");
 ?><!DOCTYPE html>
 <html lang="pt-br">
 <head>

@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif ;
+    font-family: 'Mooli', sans-serif;
 }
 
 :root{
     --roxa: #a683ff;
     --verde: #cae4ce;
     --azul:  #d2ecf2;
-    --rosa:  #ffe3dd;
+    --rosa:  #ffdae8;
     --branco: #fff;
     --preto: #000;
 }
@@ -21,10 +21,11 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 260px;
+    width: 240px;
     background: var(--rosa);
     z-index: 100;
     transition: all 0.5s ease;
+    box-shadow: 0 0 5px black;
 }
 
 
@@ -36,13 +37,10 @@
     align-items: center;
 }
 
-.sidebar .logo-details i{
-    font-size: 30px;
-    color: var(--preto);
+.sidebar .logo-details img{
+    width: 50px;
     height: 50px;
-    min-width: 78px;
-    text-align: center;
-    line-height: 50px;
+    margin: 10px 0 0 0;
 }
 
 .sidebar .logo-details .logo-name{

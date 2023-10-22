@@ -1,16 +1,11 @@
 <?php
-
-include('../../components/ADMIN/navbar.php');
-
-include('../../components/ADMIN/navbar/navSuperior.php');
-
-include_once ("../../Dao/validador_acesso.php");
-
-
-
-?>
-
-<!DOCTYPE html>
+include_once('../../components/ADMIN/navbar.php');
+include_once('../../components/ADMIN/navbar/navSuperior.php');
+include_once("../../dao/usuarioDAO.php");
+include_once("../../model/usuario.php");
+include_once("../../dao/atualizarSessão.php");
+$usuarioDAO = new usuarioDAO();
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -35,7 +30,7 @@ include_once ("../../Dao/validador_acesso.php");
                     <p>Usuarias Cadastradas</p>
                     <div class="numCadastrados">
                         <i class='bx bxs-user'></i>
-                        <span>0</span>
+                        <span><?= $usuarioDAO->listaCadastros(); ?></span>
                     </div>
 
                 </div> <!-- Fim UserCadastrado -->
@@ -150,85 +145,23 @@ include_once ("../../Dao/validador_acesso.php");
                             <th>ID</th>
                             <th>Nome de Usuario</th>
                             <th>Email de Usuario</th>
-                            <th>Mãe</th>
+                            <th>Tipo de Perfil</th>
                             <th>Situação</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
+                    <?php foreach ($usuarioDAO->read() as $usuario): ?>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Guilherme</td>
-                            <td>Guilherme@gmail.com</td>
-                            <td>Mãe Solo</td>
-                            <td>Suspenso</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Guilherme</td>
-                            <td>Guilherme@gmail.com</td>
-                            <td>Tentante</td>
-                            <td>Ativo</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Guilherme</td>
-                            <td>Guilherme@gmail.com</td>
-                            <td>Mãe Solo</td>
-                            <td>Inativo</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>alexandre</td>
-                            <td>feitis@gmail.com</td>
-                            <td>Mãe Solo</td>
-                            <td>Suspenso</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Guilherme</td>
-                            <td>Guilherme@gmail.com</td>
-                            <td>Mãe Solo</td>
-                            <td>Suspenso</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Guilherme</td>
-                            <td>Guilherme@gmail.com</td>
-                            <td>Mãe Solo</td>
-                            <td>Suspenso</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Guilherme</td>
-                            <td>Guilherme@gmail.com</td>
-                            <td>Mãe Solo</td>
-                            <td>Suspenso</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Guilherme</td>
-                            <td>Guilherme@gmail.com</td>
-                            <td>Mãe Solo</td>
-                            <td>Suspenso</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Guilherme</td>
-                            <td>Guilherme@gmail.com</td>
-                            <td>Mãe Solo</td>
+                            <td><?= $usuario->getIdUsuario() ?></td>
+                            <td><?= $usuario->getNomeUsuario() ?></td>
+                            <td><?= $usuario->getEmailUsuario() ?></td>
+                            <td><?= $usuario->getTipoDePerfil() ?></td>
                             <td>Suspenso</td>
                             <td class="iconEdit"><i class='bx bx-edit'></i></td>
                         </tr>
                     </tbody>
+                    <?php endforeach; ?>
                 </table>
             </div><!-- Fim TabelaUsuarias -->
         </div>

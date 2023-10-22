@@ -4,8 +4,6 @@ include('../../components/ADMIN/navbar.php');
 
 include('../../components/ADMIN/navbar/navSuperior.php');
 
-include_once ("../../Dao/validador_acesso.php");
-
 
 
 ?>
@@ -22,6 +20,7 @@ include_once ("../../Dao/validador_acesso.php");
     <link rel="stylesheet" href="../../components/ADMIN/navbar/navSuperior.css">
     <!-- CSS Navbar -->
     <link rel="stylesheet" href="../../components/ADMIN/style.css">
+    <script src="../../js/atualizarSessão.js"></script>
     <!-- Imports -->
     <!-- BoxIcons CDN links -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -34,9 +33,9 @@ include_once ("../../Dao/validador_acesso.php");
                     <img src="../../img/ADMIN/perfil.png" alt="">
 
                     <div class="nomeFuncao">
-                        <h2>Fabricio</h2>
+                        <h2><?= $_SESSION['nomeUsuario']; ?></h2>
                         <p>Adm</p>
-                        <span id="Bio">Focado em fazer o melhor para a empresa NUTS</span>
+                        <span id="Bio"><?= $_SESSION['biografiaUsuario']; ?></span>
                     </div><!-- Fim NomeFunção -->
                 </div><!-- Fim Adm -->
             </div><!-- Fim NavAdm -->
