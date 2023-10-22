@@ -26,7 +26,19 @@ try {
     $_SESSION['dataNascimento'] = $row['nascUsuario'];
     $_SESSION['telefone'] = $row['telefoneUsuario'];
     $_SESSION['nivelConta'] = $row['nivelConta'];
-    $_SESSION['tipoPerfil'] = $row['tipoConta'];
+
+    if($row['tipoConta'] == 1){
+        $_SESSION['tipoPerfil'] = "Mãe convencional";
+    } else if($row['tipoConta'] == 2){
+        $_SESSION['tipoPerfil'] = "Gestante";
+    } else if($row['tipoConta'] == 3){
+        $_SESSION['tipoPerfil'] = "Tentante";
+    } else if($row['tipoConta'] == 4){
+        $_SESSION['tipoPerfil'] = "Mãe Solo";
+    } else {
+        $_SESSION['tipoPerfil'] = "Desconhecido";
+    }
+    
     $_SESSION['status'] = $row['statusConta'];
 } catch (PDOException $e) {
     echo "Falha na conexão com banco de dados: " . $e->getMessage();

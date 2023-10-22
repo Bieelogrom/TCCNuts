@@ -133,6 +133,9 @@ class usuarioDAO
         $usuario->setTelefoneUsuario($row['telefoneUsuario']);
         $usuario->setDataNascimentoUsuario($row['nascUsuario']);
         $usuario->setSenhaUsuario($row['senhaUsuario']);
+        $usuario->setTipoDePerfil($row['tipoConta']);
+        $usuario->setStatusConta($row['statusConta']);
+        $usuario->setFotoDePerfil($row['fotoUsuario']);
 
         return $usuario;
     }

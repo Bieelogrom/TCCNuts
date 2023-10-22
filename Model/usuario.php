@@ -12,6 +12,9 @@ class Usuario{
     protected $apelidoUsuario;
     protected $fotoDePerfil;
     protected $tipoDePerfil;
+    protected $nivelConta;
+
+    protected $statusConta;
 
     public function getTipoDePerfil(){
         return $this->tipoDePerfil;
@@ -84,6 +87,14 @@ class Usuario{
 
     public function setApelidoUsuario($apelidoUsuario){
         $this->apelidoUsuario = $apelidoUsuario;
+    }
+
+    public function getStatusConta() {
+        return $this->statusConta;
+    }
+
+    public function setStatusConta($statusConta) {
+        $this->statusConta = $statusConta;
     }
 
     

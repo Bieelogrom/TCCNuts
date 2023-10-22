@@ -10,7 +10,7 @@
                 <input type="search" placeholder="Procurar">
             </div>   
             <div class="profile-picture">
-                <a href="perfil.php"><img src="./../../img/siteSerMae/home/perfil/1.png" alt=""></a>
+                <a href="perfil.php"><img src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt=""></a>
             </div>
     </div>
     </nav>

@@ -9,41 +9,28 @@ $Administrador = new Administrador();
 
 
 
-$d = filter_input_array(INPUT_POST);
-
-if(isset($_POST['login'])){
-
-    $email = filter_input(INPUT_POST, 'emailadmin', FILTER_SANITIZE_EMAIL);
-    $senha = $_POST['senhaadmin'];
-
-    try{
-        $adm = "SELECT * FROM tbadmin WHERE emailAdmin = '$email' and senhaAdmin = '$senha'";
 
 
-        $resultado = conexao::getConexao()->query($adm);
-        $logadoADM = $resultado->fetchAll();
-        $a = count($logadoADM);
+if(isset($_POST['admin_ação'])){
+    $valor = $_POST['opção'];
+    $id = $_POST['id_do_user'];
 
+    if($valor == 1){
+        $sql = "UPDATE tbUsuario SET statusConta = '1' WHERE idUsuario = '$id'";
+        $resultado = conexao::getConexao()->query($sql);
+        $resultado->execute();
 
-        //echo $a;
+        header("Location: ../Views/admin/home.php?msg=Atualização_Executada");
+        exit();
+    }else if($valor == 2){
+        $sql = "UPDATE tbUsuario SET statusConta = '2' WHERE idUsuario = '$id'";
+        $resultado = conexao::getConexao()->query($sql);
+        $resultado->execute();
 
-
-
-        if ($a == 1){
-            session_start();
-            $_SESSION['idAdmin'] = $logadoADM[0]['idAdmin'];
-            $_SESSION['nomeAdmin'] = $logadoADM[0]['nomeAdmin'];
-            $_SESSION['Adminautenticado'] = 'SIM';
-        
-            header('Location: ../Views/admin/home.php');
-            
-
-        }else{
-            header('Location: ../index.php?login=erro');
-        }
-    }catch(PDOException $e){
-        echo "ERRO: " . $e->getMessage();
+        header("Location: ../Views/admin/home.php?msg=Atualização_Executada");
+        exit();
     }
+
 }
 
 

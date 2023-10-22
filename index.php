@@ -149,19 +149,21 @@ include_once "Dao/usuarioDAO.php";
         </div>
     </div>
 
-    <?php if (isset($_GET['acesso']) && $_GET['acesso'] == "erro" || isset($_GET['cadastro']) && $_GET['cadastro'] == "erro") { ?>
+    <?php if (isset($_GET['acesso']) && $_GET['acesso'] == "erro" || isset($_GET['cadastro']) && $_GET['cadastro'] == "erro" || isset($_GET['login']) && $_GET['login'] == "suspenso") { ?>
         <?php if(($_GET['acesso'])) { ?>
         <div class="modal-containerBanir">
             <div class="modal">
                 <h2>Erro de acesso</h2>
-                <p>Você precisa logar para acessar essa página!</p>
+                <?php if($_GET['acesso'] == "erro") {
+                    echo "<p>Você precisa logar para acessar essa página!</p>";
+                 } ?>
                 <hr />
                 <div class="btns">
                     <button class="btnOK" onclick="closeModal(0)">OK</button>
                 </div>
             </div>
+        </div>
         <?php }else if (($_GET['cadastro']))  { ?>
-        
         <div class="modal-containerBanir">
             <div class="modal">
                 <h2>Erro de cadastro</h2>
@@ -171,7 +173,22 @@ include_once "Dao/usuarioDAO.php";
                     <button class="btnOK" onclick="closeModal(0)">OK</button>
                 </div>
             </div>
+        </div>
+        <?php }else if (($_GET['login'])) { ?>
+            <div class="modal-containerBanir">
+            <div class="modal">
+                <h2>Erro de acesso</h2>
+                <?php if($_GET['login'] == "suspenso") {
+                    echo "<p>Você está suspenso do site!</p>";
+                 } ?>
+                <hr />
+                <div class="btns">
+                    <button class="btnOK" onclick="closeModal(0)">OK</button>
+                </div>
+            </div>
+        </div>
         <?php } ?>
+
         <script>
             const modalErro = document.querySelector('.modal-containerBanir')
             const opcaoModal = [modalErro]

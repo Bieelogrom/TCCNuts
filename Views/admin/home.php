@@ -5,8 +5,10 @@ include_once("../../dao/usuarioDAO.php");
 include_once("../../model/usuario.php");
 include_once("../../dao/atualizarSessão.php");
 $usuarioDAO = new usuarioDAO();
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,15 +19,17 @@ $usuarioDAO = new usuarioDAO();
     <link rel="stylesheet" href="../../components/ADMIN/navbar/navSuperior.css">
     <!-- CSS Navbar -->
     <link rel="stylesheet" href="../../components/ADMIN/style.css">
+    <link rel="stylesheet" href="../../css/ADMIN/modal.css">
     <!-- Imports -->
     <!-- BoxIcons CDN links -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
 
     <section class="home-section">
         <div class="conteudo-adm">
-        <div class="main-user">
+            <div class="main-user">
                 <div class="userCadastrado">
                     <p>Usuarias Cadastradas</p>
                     <div class="numCadastrados">
@@ -137,7 +141,7 @@ $usuarioDAO = new usuarioDAO();
                 </div><!-- Fim SatisfaçãoApp -->
             </div><!-- Fim MainGraficos -->
 
-            <input type="text" id="inputBusca"placeholder="O que você procura?">
+            <input type="text" id="inputBusca" placeholder="O que você procura?">
             <div class="tabelaUsuarias">
                 <table>
                     <thead>
@@ -150,17 +154,38 @@ $usuarioDAO = new usuarioDAO();
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <?php foreach ($usuarioDAO->read() as $usuario): ?>
-                    <tbody>
-                        <tr>
-                            <td><?= $usuario->getIdUsuario() ?></td>
-                            <td><?= $usuario->getNomeUsuario() ?></td>
-                            <td><?= $usuario->getEmailUsuario() ?></td>
-                            <td><?= $usuario->getTipoDePerfil() ?></td>
-                            <td>Suspenso</td>
-                            <td class="iconEdit"><i class='bx bx-edit'></i></td>
-                        </tr>
-                    </tbody>
+                    <?php foreach ($usuarioDAO->read() as $usuario) : ?>
+                        <tbody>
+                            <tr>
+                                <td><?= $usuario->getIdUsuario() ?></td>
+                                <td><?= $usuario->getNomeUsuario() ?></td>
+                                <td><?= $usuario->getEmailUsuario() ?></td>
+                                <td><?php
+                                    if ($usuario->getTipoDePerfil() == 1) {
+                                        echo "Mãe convencional";
+                                    } else if ($usuario->getTipoDePerfil() == 2) {
+                                        echo "Gestante";
+                                    } else if ($usuario->getTipoDePerfil() == 3) {
+                                        echo "Tentante";
+                                    } else if ($usuario->getTipoDePerfil() == 4) {
+                                        echo "Mãe Solo";
+                                    } else {
+                                        echo "Desconhecido";
+                                    }
+                                    ?>
+                                </td>
+                                <td><?php
+                                    if ($usuario->getStatusConta() == 1) {
+                                        echo "Ativo";
+                                    } else if ($usuario->getStatusConta() == 2) {
+                                        echo "Suspenso";
+                                    } else if ($usuario->getStatusConta() == 3) {
+                                        echo "Banido";
+                                    }
+                                    ?></td>
+                                <td class="iconEdit"><i class='bx bx-edit'></i></td>
+                            </tr>
+                        </tbody>
                     <?php endforeach; ?>
                 </table>
             </div><!-- Fim TabelaUsuarias -->
@@ -169,71 +194,126 @@ $usuarioDAO = new usuarioDAO();
 
     <!-- Modal -->
     <div id="fade" class="hide"></div>
-        <div id="modal" class="hide">
-            <div id="modal-header">
-                <h3>ID de Usuaria: 
-                    <p class="idUser">
-                        17373
-                    </p>
-                </h3>
-                <button id="fechar-modal">x</button>
-            </div><!-- Fim Modal Header -->
+    <div id="modal" class="hide">
+        <div id="modal-header">
+            <h3>ID de Usuaria:
+                <p class="idUser">
+                    <?= $usuario->getIdUsuario() ?>
+                </p>
+            </h3>
+            <button id="fechar-modal">x</button>
+        </div><!-- Fim Modal Header -->
 
-            <div id="modal-body">
-                <div class="infosUsuario">
-                    <h2>Guilherme</h2>
-                    <div class="mainFoto">
-                        <div class="foto">
-                            <img src="../../img/ADMIN/perfil.png" alt="">
-                        </div><!-- Fim Foto -->
+        <div id="modal-body">
+            <div class="infosUsuario">
+                <h2><?= $usuario->getNomeUsuario() ?></h2>
+                <div class="mainFoto">
+                    <div class="foto">
+                        <img src="../../img/Perfis/<?= $usuario->getFotoDePerfil() ?>" alt="">
+                    </div><!-- Fim Foto -->
 
-                        <div class="mainInfoUser">
-                            <div class="email">
-                                <h3 class="emailUser">
-                                    Guilherme@gmail.com
-                                </h3>
-                            </div><!-- Fim Email -->
-
-                            <div class="apelido">
-                                <h3 class="apelidoUser">
-                                    Guilherminho
-                                </h3>
-                            </div><!-- Fim Apelido -->
-                        </div><!-- Fim MainInfoUser -->
-
-                        <div class="situacaoConta">
-                            <h3 class="situacaoUser">
-                                Ativo
+                    <div class="mainInfoUser">
+                        <div class="email">
+                            <h3 class="emailUser">
+                                <?= $usuario->getEmailUsuario() ?>
                             </h3>
+                        </div><!-- Fim Email -->
+
+                        <div class="apelido">
+                            <h3 class="apelidoUser">
+                                <?= $usuario->getApelidoUsuario() ?>
+                            </h3>
+                        </div><!-- Fim Apelido -->
+                    </div><!-- Fim MainInfoUser -->
+
+                    <div class="situacaoConta">
+                        <h3 class="situacaoUser">
+                            <?php
+                            if ($usuario->getStatusConta() == 1) {
+                                echo "Ativo";
+                            } else if ($usuario->getStatusConta() == 2) {
+                                echo "Suspenso";
+                            } else if ($usuario->getStatusConta() == 3) {
+                                echo "Banido";
+                            }
+                            ?>
+                        </h3>
 
                         <div class="tipoMae">
                             <h3>
-                                Mãe Solo
+                                <?php
+                                if ($usuario->getTipoDePerfil() == 1) {
+                                    echo "Mãe convencional";
+                                } else if ($usuario->getTipoDePerfil() == 2) {
+                                    echo "Gestante";
+                                } else if ($usuario->getTipoDePerfil() == 3) {
+                                    echo "Tentante";
+                                } else if ($usuario->getTipoDePerfil() == 4) {
+                                    echo "Mãe Solo";
+                                } else {
+                                    echo "Desconhecido";
+                                }
+                                ?>
                             </h3>
                         </div>
 
-                        </div>
-                    </div><!-- Fim MainFoto -->
-
-                    <div class="dropdownSituacao">
-                    <select id="situacao">
-                        <option value="suspenso">Suspenso</option>
-                        <option value="ativo">Ativo</option>
+                    </div>
+                </div><!-- Fim MainFoto -->
+                <form method="post" action="../../Controller/administradorController.php">
+                <div class="dropdownSituacao">
+                    <input type="hidden" id="id_secreto" name="id_do_user">
+                    <select id="situacao" name="opção">
+                        <option value="2">Suspenso</option>
+                        <option value="1">Ativo</option>
                     </select>
-                    </div><!-- Fim DropdownSituação -->
+                </div><!-- Fim DropdownSituação -->
 
 
-                    <div class="btnGroup">
-                        <button class="salvar">Salvar</button>
-                    </div><!-- Fim BtnGroups -->
-                </div><!-- Fim InfoUsuarios -->
-            </div><!-- Fim Modal Body -->
-            </div><!-- Fim Modal -->
+                <div class="btnGroup">
+                    <button class="salvar" type="submit" name="admin_ação" onclick="pegarID(<?= $usuario->getIdUsuario() ?>, 'id_secreto')">Salvar</button>
+                </div>
+                </form><!-- Fim BtnGroups -->
+            </div><!-- Fim InfoUsuarios -->
+        </div><!-- Fim Modal Body -->
+    </div><!-- Fim Modal -->
+
+    <?php if((isset($_GET['msg']) && $_GET['msg'] == "Atualização_Executada")) { ?>
+        <div class="modal-containerBanir">
+            <div class="modal">
+                <h2>Sucesso.</h2>
+                <p>Atualização realizada!</p>
+                <hr />
+                <div class="btns">
+                    <button class="btnOK" onclick="closeModal(0)">OK</button>
+                </div>
+            </div>
+            <script>
+            const modalErro = document.querySelector('.modal-containerBanir')
+            const opcaoModal = [modalErro]
+
+            function openModal(a) {
+                opcaoModal[a].classList.add('active')
+            }
+
+            function closeModal(b) {
+                opcaoModal[b].classList.remove('active');
+                window.location.href = "home.php"
+            }
+
+            openModal(0);
+        </script>
+    <?php } ?>
+
+    <script>
+        function pegarID(id, elemento){
+            document.getElementById(elemento).value = id;
+        }
+    </script>
 
     <script src="../../Components/ADMIN/menu-lateral.js"></script>
     <script src="../../Components/ADMIN/modal/modal.js"></script>
     <script src="../../js/ADMIN/inputBusca.js"></script>
-    
-</body>
-</html>
 
+</body>
+
+</html>

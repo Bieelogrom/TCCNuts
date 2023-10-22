@@ -59,24 +59,33 @@ if (isset($_POST['registrar'])) {
 
 
         if ($n == 1) {
-            $id =  $logado[0]['idUsuario'];
-            $hash = $logado[0]['senhaUsuario'];
-            $email = $logado[0]['emailUsuario'];
+            if ($logado[0]['statusConta'] == 1) {
 
-            $stmt = conexao::getConexao()->prepare($sql);
-            $stmt->bindParam("s", $email);
+                $id =  $logado[0]['idUsuario'];
+                $hash = $logado[0]['senhaUsuario'];
+                $email = $logado[0]['emailUsuario'];
 
-            $stmt->bindValue($id, $hash);
-            $stmt->fetch();
+                $stmt = conexao::getConexao()->prepare($sql);
+                $stmt->bindParam("s", $email);
 
-            if (password_verify($senha, $hash)) {
-                $_SESSION['ID_conta'] = $logado[0]['idUsuario'];
-                $_SESSION['Usuarioautenticado'] = 'SIM';
+                $stmt->bindValue($id, $hash);
+                $stmt->fetch();
 
-                header('Location: ../Views/siteSerMae/home.php');
+                if (password_verify($senha, $hash)) {
+                    $_SESSION['ID_conta'] = $logado[0]['idUsuario'];
+                    $_SESSION['Usuarioautenticado'] = 'SIM';
+
+                    header('Location: ../Views/siteSerMae/home.php');
+                    exit();
+                } else {
+                    header('Location: ../index.php?login=erro');
+                    exit();
+                }//outros status abaixo
+            } else if ($logado[0]['statusConta'] == 2) {
+                header('Location: ../index.php?login=suspenso');
                 exit();
             } else {
-                header('Location: ../index.php?login=erro');
+                header('Location: ../index.php?login=banido');
                 exit();
             }
         } else {
