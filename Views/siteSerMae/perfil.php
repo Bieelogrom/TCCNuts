@@ -56,7 +56,7 @@ include_once("../../dao/atualizarSessão.php");
 
                                 <!--imagens do perfil inicio-->
                                 <div class="papel-parede-img-perfil">
-                                    <img data-bs-toggle="modal" class="papel-parede-img" src="../../img/siteSerMae/perfil/capaIMG/fundo.jpg" alt="">
+                                    <img data-bs-toggle="modal" class="papel-parede-img" src="../../img/siteSerMae/perfil/capaIMG/fundo.jpg" id="my-profile-picture" alt="">
 
                                     <div class="profile-picture" id="my-profile-picture">
                                         <img class="perfil-img" src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="">
