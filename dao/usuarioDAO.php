@@ -7,10 +7,11 @@ class usuarioDAO
     public function create(Usuario $usuario)
     {
         try {
-            $sql = "INSERT INTO tbusuario (nomeUsuario, telefoneUsuario, emailUsuario, nascUsuario, senhaUsuario) VALUES (:nome, :phone, :email, :dataNasc, :senha); ";
+            $sql = "INSERT INTO tbusuario (nomeUsuario, apelidoUsuario, telefoneUsuario, emailUsuario, nascUsuario, senhaUsuario) VALUES (:nome, :apelido, :phone, :email, :dataNasc, :senha); ";
 
             $query = conexao::getConexao()->prepare($sql);
             $query->bindValue(':nome', $usuario->getNomeUsuario());
+            $query->bindValue(':apelido', $usuario->getApelidoUsuario());
             $query->bindValue(':phone', $usuario->getTelefoneUsuario());
             $query->bindValue(':email', $usuario->getEmailUsuario());
             $query->bindValue(':dataNasc', $usuario->getDataNascimentoUsuario());

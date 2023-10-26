@@ -40,7 +40,7 @@ CREATE TABLE `tbusuario` (
   `bioUsuario` varchar(125) NOT NULL DEFAULT "Olá, eu sou novo no SerMãe!",
   `nascUsuario` date NOT NULL,
   `fotoUsuario` text NOT NULL,
-  `capaUsuario` text NOT NULL,
+  `capaUsuario` text DEFAULT "capaPadrão.jpg",
   `statusConta` int(10) NOT NULL DEFAULT 1,
   `nivelConta` int(10) NOT NULL DEFAULT 1,
   `tipoConta` int(10) NOT NULL DEFAULT 5,

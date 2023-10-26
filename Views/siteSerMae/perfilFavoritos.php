@@ -40,133 +40,138 @@ include_once("../../dao/atualizarSessão.php");
     <!--Main left fim-->
 
 
-    <!--começo do perfil inicio-->
     <div class="container-profile">
-            <div class="fluid-profile">
-                <div class="area-perfil">
-                    <div class="box-perfil">
+                <div class="fluid-profile">
+                    <div class="area-perfil">
+                        <div class="box-perfil">
 
-                        <!--informações do perfil inicio-->
-                        <div class="informacao-perfil">
+                            <!--informações do perfil inicio-->
+                            <div class="informacao-perfil">
 
-                            <!--imagens do perfil inicio-->
-                            <div class="papel-parede-img-perfil">
-                                <img data-bs-toggle="modal" class="papel-parede-img" src="../../img/siteSerMae/perfil/capaIMG/fundo.jpg" alt="">
-                                
-                                <div class="profile-picture" id="my-profile-picture">
-                                <img class="perfil-img" src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="">
+                                <!--imagens do perfil inicio-->
+                                <div class="papel-parede-img-perfil">
+                                    <img data-bs-toggle="modal" class="papel-parede-img" src="../../img/siteSerMae/perfil/capaIMG/<?= $_SESSION['fotoCapa'] ?>" id="my-profile-picture" alt="">
+
+                                    <div class="profile-picture" id="my-profile-picture">
+                                        <img class="perfil-img" src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <!--imagens do perfil final-->
-                            
-                            <!--bio inicio-->
-                            <div class="area-bio">
+                                <!--imagens do perfil final-->
 
-                                <!--nomes usuária-->
-                                <div class="usuario-bio">
-                                    <div class="area-nick-nome">
-                                        <div class="nick">
-                                            <h1><?= $_SESSION['nomeUsuario']; ?></h1>
-                                        </div> 
-                                        <div class="perfil-mulher">
-                                            <h1><?= $_SESSION['tipoPerfil']; ?></h1>
+                                <!--bio inicio-->
+                                <div class="area-bio">
+
+                                    <!--nomes usuária-->
+                                    <div class="usuario-bio">
+                                        <div class="area-nick-nome">
+                                            <div class="nick">
+                                                <h1><?= $_SESSION['nomeUsuario']; ?></h1>
+                                            </div>
+                                            <div class="perfil-mulher">
+                                                <h1><?= $_SESSION['tipoPerfil']; ?></h1>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="bio">
-                                        <p><?= $_SESSION['biografiaUsuario'] ?></p>
-                                    </div>
+                                        <div class="bio">
+                                            <p><?= $_SESSION['biografiaUsuario'] ?></p>
+                                        </div>
+
                                         <!--Botão editar perfil inicio-->
-                                       <button class="btn-editar-perfil" id="open-modal">Editar</button>
+                                        <button class="btn-editar-perfil" id="open-modal">Editar</button>
+                                        <?php
+                                        if ($_SESSION['nivelConta'] == 3) { ?>
+                                            <button onclick="admin()" class="btn-editar-perfil">Tela ADMIN</button>
+                                        <?php }
+                                        ?>
                                         <div id="fade" class="hide"></div>
                                         <div id="modal" class="hide">
 
-                                        <div class="modal-header">
-                                            <h2>Editar o seu Perfil</h2>
-                                            <button id="close-modal">Voltar</button>
-                                        </div>
-                                        <div class="modal-body">
-
-                                        <!--dados inicio-->
-                                        <div class="input-group">
-                                            <h3>E-mail:</h3>
-                                            <input type="text">
-                                        </div>
-
-                                        <div class="input-group">
-                                            <h3>Nome Usuária:</h3>
-                                            <input type="text" name="username" id="username">
-                                        </div>
-
-                                        <div class="input-group">
-                                            <h3>Nome Completo:</h3>
-                                            <input type="text" name="position" id="position">
-                                        </div>
-
-                                        <div class="input-group">
-                                            <h3>Telefone:</h3>
-                                            <input type="text" name="phone" id="phone">
-                                        </div>
-
-                                        
-                                        <!--dropDown-->
-                                        <div class="dropdown">
-                                            <div class="select">
-                                                <span class="selected">Escolha seu perfil</span>
-                                                <div class="caret"></div>
+                                            <div class="modal-header">
+                                                <h2>Editar o seu Perfil</h2>
+                                                <button id="close-modal">Voltar</button>
                                             </div>
-                                            <ul class="menu">
-                                                <li class="active">Mãe</li>
-                                                <li>Mãe solo</li>
-                                                <li>Tentante</li>
-                                                <li>Gestante</li>
-                                            </ul> 
-                                        </div>                                        
-                                        <!--dados final-->
-                                        <input type="submit" class="btn btn-primary btn-lg" value="Salvar Alterações">
-                                        </div>
-                                        </div>
-                                       
+                                            <div class="modal-body">
 
-                                        </div>
-                                        <!--Botão editar perfil final-->
-                                        
-                                <!--nomes usuária-->
-                               
-
-                                <!--descrição do perfil inicio-->                                     
-                                <div class="seguindo-seguidores">
-
-                                            <div class="seguindo">
-                                                <div class="numeros-seguir">
-                                                    <p>0</p>
+                                                <!--dados inicio-->
+                                                <div class="input-group">
+                                                    <h3>E-mail: <?= $_SESSION['email']; ?></h3>
+                                                    <input type="text">
                                                 </div>
-                                                <div class="seguir-text">
-                                                    <h1>Seguindo</h1>
+
+                                                <div class="input-group">
+                                                    <h3>Apelido:  <?= $_SESSION['apelido']; ?></h3>
+                                                    <input type="text" name="username" id="username">
                                                 </div>
+
+                                                <div class="input-group">
+                                                    <h3>Nome Completo: <?= $_SESSION['nomeUsuario']; ?></h3>
+                                                    <input type="text" name="position" id="position">
+                                                </div>
+
+                                                <div class="input-group">
+                                                    <h3>Telefone: <?= $_SESSION['telefone']; ?></h3>
+                                                    <input type="text" name="phone" id="phone">
+                                                </div>
+
+
+                                                <!--dropDown-->
+                                                <div class="dropdown">
+                                                    <div class="select">
+                                                        <span class="selected">Escolha seu perfil</span>
+                                                        <div class="caret"></div>
+                                                    </div>
+                                                    <ul class="menu">
+                                                        <li class="active">Mãe</li>
+                                                        <li>Mãe solo</li>
+                                                        <li>Tentante</li>
+                                                        <li>Gestante</li>
+                                                    </ul>
+                                                </div>
+                                                <!--dados final-->
+                                                <input type="submit" class="btn btn-primary btn-lg" value="Salvar Alterações">
                                             </div>
+                                        </div>
 
-                                            <div class="seguidores">
-                                                <div class="numeros-seguir">
-                                                    <p>0</p>
-                                                </div>
-                                                <div class="seguir-text">
-                                                    <h1>Seguidores</h1>
+
+                                    </div>
+                                    <!--Botão editar perfil final-->
+
+                                    <!--nomes usuária-->
+
+
+                                    <!--descrição do perfil inicio-->
+                                    <div class="seguindo-seguidores">
+
+                                        <div class="seguindo">
+                                            <div class="numeros-seguir">
+                                                <p>0</p>
+                                            </div>
+                                            <div class="seguir-text">
+                                                <h1>Seguindo</h1>
+                                            </div>
+                                        </div>
+
+                                        <div class="seguidores">
+                                            <div class="numeros-seguir">
+                                                <p>0</p>
+                                            </div>
+                                            <div class="seguir-text">
+                                                <h1>Seguidores</h1>
                                             </div>
                                         </div>
 
                                         <!--descrição do perfil final-->
+                                    </div>
+                                    <!--bio final-->
+
                                 </div>
-                            <!--bio final-->
-
                             </div>
-                        </div>
-                        <!--informações do perfil final-->
+                            <!--informações do perfil final-->
 
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
-    <!--começo do perfil final-->
+            <!--começo do perfil final-->
 
 
     <!--publicações, favoritos e dicas - inicio-->

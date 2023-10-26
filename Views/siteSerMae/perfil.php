@@ -56,7 +56,7 @@ include_once("../../dao/atualizarSessão.php");
 
                                 <!--imagens do perfil inicio-->
                                 <div class="papel-parede-img-perfil">
-                                    <img data-bs-toggle="modal" class="papel-parede-img" src="../../img/siteSerMae/perfil/capaIMG/fundo.jpg" id="my-profile-picture" alt="">
+                                    <img data-bs-toggle="modal" class="papel-parede-img" src="../../img/siteSerMae/perfil/capaIMG/<?= $_SESSION['fotoCapa'] ?>" id="my-profile-picture" alt="">
 
                                     <div class="profile-picture" id="my-profile-picture">
                                         <img class="perfil-img" src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="">
@@ -99,22 +99,22 @@ include_once("../../dao/atualizarSessão.php");
 
                                                 <!--dados inicio-->
                                                 <div class="input-group">
-                                                    <h3>E-mail:</h3>
+                                                    <h3>E-mail: <?= $_SESSION['email']; ?></h3>
                                                     <input type="text">
                                                 </div>
 
                                                 <div class="input-group">
-                                                    <h3>Nome Usuária:</h3>
+                                                    <h3>Apelido:  <?= $_SESSION['apelido']; ?></h3>
                                                     <input type="text" name="username" id="username">
                                                 </div>
 
                                                 <div class="input-group">
-                                                    <h3>Nome Completo:</h3>
+                                                    <h3>Nome Completo: <?= $_SESSION['nomeUsuario']; ?></h3>
                                                     <input type="text" name="position" id="position">
                                                 </div>
 
                                                 <div class="input-group">
-                                                    <h3>Telefone:</h3>
+                                                    <h3>Telefone: <?= $_SESSION['telefone']; ?></h3>
                                                     <input type="text" name="phone" id="phone">
                                                 </div>
 

@@ -8,7 +8,7 @@ include_once("../../dao/atualizarSessão.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/siteSerMae/inicioSite.css">
     <link rel="stylesheet" href="../../css/siteSerMae/boasVindas.css">
-    <link rel="stylesheet" href="./css/dica.css">
+    <link rel="stylesheet" href="../../css/telaDicas/dica.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Dicas - Cuidados ao seu/sua filho(a)</title>
 </head>
@@ -16,7 +16,7 @@ include_once("../../dao/atualizarSessão.php");
     
      <!--navBar-->
      <?php
-    include('../../components/navBar.php');   
+    include('../../components/siteSerMae/navBar.php');   
     ?>
     <!--navBar-->
 
@@ -28,13 +28,13 @@ include_once("../../dao/atualizarSessão.php");
     <div class="main-left">
                     <!--inicio Boas vindas-->
                     <?php
-                    include('../../components/boasVindas.php')
+                    include('../../components/siteSerMae/boasVindas.php')
                     ?>
                     <!--final Boas vindas-->
 
                     <!--start aside bar-->
                     <?php
-                    include('../../components/menu.php')
+                    include('../../components/siteSerMae/menu.php')
                     ?>
                     <!--end aside bar-->
     </div>
@@ -147,13 +147,13 @@ include_once("../../dao/atualizarSessão.php");
     <!--Inicio popup aria-->
     <!--final perfil-popUp-->
     <?php
-    include('../../components/perfilPopup.php')
+    include('../../components/siteSerMae/perfilPopup.php')
     ?>
     <!--inicio perfil-popUp-->
 
     <!--inicio adicionar post-->
     <?php
-    include('../../components/adicionarPost.php')
+    include('../../components/siteSerMae/adicionarPost.php')
     ?>
     <!--final adicionar post-->
     <!--Final popup aria-->

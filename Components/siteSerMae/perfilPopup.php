@@ -3,7 +3,7 @@
         <div>
             <div class="popup-box profile-popup-box">
                 <h1></h1>
-                <p></p>
+                <p><?= $_SESSION['apelido'] ?></p>
                 <div id="my-profile-picture">
                     <img src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>">
                 </div>
