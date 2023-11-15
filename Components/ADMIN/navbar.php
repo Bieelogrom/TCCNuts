@@ -17,7 +17,7 @@ include_once("../../dao/atualizarSessão.php");
     <!-- Menu Lateral -->
     <div class="sidebar open">
         <div class="logo-details">
-            <img src="" alt="">
+            <img src="../../img/ADMIN/logo.png" alt="">
             <span class="logo-name">serMãe</span>
         </div>
         
@@ -44,12 +44,12 @@ include_once("../../dao/atualizarSessão.php");
                 </a>
             </li>
 
-            <li>
+            <!--<li>
                 <a href="../../Views/admin/cadastrar-adm.php">
                     <i class='bx bxs-user-plus'></i>
                     <span class="link-name">Cadastrar ADM</span>
                 </a>
-            </li>
+            </li>-->
 
             <li>
                 <a href="../../Views/admin/configuracoes.php">
@@ -65,7 +65,7 @@ include_once("../../dao/atualizarSessão.php");
                 <img src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="Foto ADM">
             </div>
             <div class="name-job">
-                <div class="profile-name"><?= $_SESSION['nomeUsuario']; ?></div>
+                <div class="profile-name"><?= $_SESSION['apelido']; ?></div>
                 <div class="job">ADM</div>
             </div>
             <a href="../../Dao/logoff.php">

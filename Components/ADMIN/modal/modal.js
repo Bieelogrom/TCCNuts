@@ -1,12 +1,27 @@
-const openModalButton = document.querySelector(".bx-edit");
-const closeModalButton = document.querySelector("#fechar-modal");
-const modal = document.querySelector("#modal");
-const fade = document.querySelector("#fade");
+// let modal = document.getElementById('modal')
+let elemento = document.getElementById('id_escondido')
 
-const toggleModal = () => {
-    [modal , fade].forEach((el) => el.classList.toggle("hide"));
-};
+$(document).ready(function(){
+    $(document).on('click', '.view_data', function(){
+        var user_id = $(this).attr("id");
+        if(user_id !== ''){
+            var dados = {
+                user_id: user_id
+            };
+        };
+        $.post('visualizar.php', dados, function(retorna){
+            $('#info_user').html(retorna);
+            $('#info_user').css('color', 'black')
+            $('#modal')[0].showModal();
+        });
+    }) 
+});  
 
-[openModalButton , closeModalButton , fade].forEach((el) => {
-    el.addEventListener("click", () => toggleModal());
-});
+
+function PegarID(ID){
+    console.log(ID)
+}
+
+function fecharModal(){
+    modal.close();
+}
